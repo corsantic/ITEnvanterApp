@@ -210,16 +210,16 @@ public class MainActivity extends AppCompatActivity
     private Fragment getHomeFragment() {
         switch (navItemIndex) {
             case 0:
-                // onarım
+                // urun ara
                 UrunAraFragment urunAraFragment = new UrunAraFragment();
                 return urunAraFragment;
             case 1:
-                // imalat
+                // urun teslim
                 UrunTeslimFragment urunTeslim = new UrunTeslimFragment();
 
                 return urunTeslim;
             case 2:
-                // parça ara
+                //  yeni urun
                 YeniUrunFragment yeniUrun = new YeniUrunFragment();
                 return yeniUrun;
 

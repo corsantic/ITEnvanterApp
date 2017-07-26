@@ -1,6 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsarkisla.itenvantermobilapp.Fragment.UrunAraFragment">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+
+        <View style="@style/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etParcaAra"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="75"
+
+                android:hint="Ürün Numarası" />
+
+            <Button
+                android:id="@+id/btBul"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_weight="0.5"
+                android:background="@color/colorAccent"
+                android:text="BUL"
+                android:textAlignment="center">
+
+            </Button>
+
+            <ImageButton
+                android:id="@+id/btAztec"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:src="@drawable/aztec"
+                android:textAlignment="center" />
+
+
+        </LinearLayout>
+
+        <View style="@style/divider" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recParcaAra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -5,15 +5,15 @@
         <item
             android:id="@+id/nav_urun_ara"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Ürün Ara" />
+            android:title="@string/nav_urun_ara" />
         <item
             android:id="@+id/nav_urun_teslim"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Ürün Teslim" />
+            android:title="@string/nav_urun_teslim" />
         <item
             android:id="@+id/nav_yeni_urun"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Yeni Ürün" />
+            android:title="@string/nav_yeni_urun" />
 
     </group>
 
