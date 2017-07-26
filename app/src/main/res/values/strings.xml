@@ -1,8 +1,29 @@
 <resources>
-    <string name="app_name">ITEnvanterMobilApp</string>
+    <string name="app_name">IT Envanter</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_urun_ara">Ürün Ara</string>
+    <string name="nav_urun_teslim">Ürün Teslim</string>
+    <string name="nav_yeni_urun">Yeni Ürün</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Ürün Ara</item>
+        <item>Ürün Teslim</item>
+        <item>Yeni Ürün</item>
+    </string-array>
+
+    <string name="activity_title_about_us">About Us</string>
+    <string name="activity_title_privacy_policy">Privacy Policy</string>
+    <string name="action_clear_all">Clear All</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_mark_all_read">Mark All as Read</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">boş fragment </string>
 </resources>
