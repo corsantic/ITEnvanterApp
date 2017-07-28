@@ -39,19 +39,19 @@ public class Kategori implements Parcelable,Cloneable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(KategoriId);
         dest.writeString(KategoriAdi);
-
         dest.writeString(KategoriKodu);
 
-        dest.writeInt(KategoriId);
 
     }
 
     private Kategori(Parcel in) {
 
+        KategoriId = in.readInt();
         KategoriAdi = in.readString();
         KategoriKodu=in.readString();
-        KategoriId = in.readInt();
+
         mInfo = in.readParcelable(Kategori.class.getClassLoader());
     }
 

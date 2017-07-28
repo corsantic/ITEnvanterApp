@@ -13,12 +13,29 @@ public class Urun implements Parcelable,Cloneable{
 
     private int UrunId;
     private String UrunAdi ;
-    private int KategoriId ;
-    private String UrunKategoriAdi ;
     private String Model;
     private String BarcodeNo ;
     private String CreateDate ;
     private String Marka;
+    private String KategoriAdi;
+
+    public String getKategoriAdi() {
+        return KategoriAdi;
+    }
+
+    public void setKategoriAdi(String kategoriAdi) {
+        KategoriAdi = kategoriAdi;
+    }
+
+    public int getKategoriId() {
+        return KategoriId;
+    }
+
+    public void setKategoriId(int kategoriId) {
+        KategoriId = kategoriId;
+    }
+
+    private int KategoriId;
 
     private Urun mInfo;
 
@@ -46,27 +63,24 @@ public class Urun implements Parcelable,Cloneable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(UrunAdi);
-        dest.writeString(UrunKategoriAdi);
+        dest.writeInt(UrunId);
+        dest.writeString(KategoriAdi);
+        dest.writeString(Marka);
         dest.writeString(Model);
         dest.writeString(BarcodeNo);
-        dest.writeString(Marka);
         dest.writeString(CreateDate);
-        dest.writeInt(KategoriId);
-        dest.writeInt(UrunId);
 
     }
 
     private Urun(Parcel in) {
 
         UrunAdi = in.readString();
-        UrunKategoriAdi = in.readString();
+        UrunId = in.readInt();
+        KategoriAdi=in.readString();
         Marka = in.readString();
+        Model=in.readString();
         BarcodeNo = in.readString();
         CreateDate = in.readString();
-        KategoriId = in.readInt();
-        UrunId = in.readInt();
-
-
 
         mInfo = in.readParcelable(Urun.class.getClassLoader());
     }
@@ -84,9 +98,6 @@ public class Urun implements Parcelable,Cloneable{
         }
     };
 
-    public String getUrunKategoriAdi() {
-        return UrunKategoriAdi;
-    }
 
     public void setUrunKategoriAdi(String UrunKategoriAdi) {
         UrunKategoriAdi = UrunKategoriAdi;
@@ -108,13 +119,7 @@ public class Urun implements Parcelable,Cloneable{
         UrunAdi = urunAdi;
     }
 
-    public int getKategoriId() {
-        return KategoriId;
-    }
 
-    public void setKategoriId(int kategoriId) {
-        KategoriId = kategoriId;
-    }
 
     public String getModel() {
         return Model;

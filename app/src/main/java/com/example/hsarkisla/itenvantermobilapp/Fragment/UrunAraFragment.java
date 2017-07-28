@@ -1,5 +1,6 @@
 package com.example.hsarkisla.itenvantermobilapp.Fragment;
 
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.hsarkisla.itenvantermobilapp.Activity.ScanActivity;
 import com.example.hsarkisla.itenvantermobilapp.Activity.UrunDetaylariActivity;
 import com.example.hsarkisla.itenvantermobilapp.Adapter.UrunAraAdapter;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
@@ -98,25 +100,24 @@ public class UrunAraFragment extends Fragment {
         urunListesi = (RecyclerView) view.findViewById(R.id.recParcaAra);
         aztecScan = (ImageButton) view.findViewById(R.id.btAztec);
 
-//// TODO: 26.07.2017
-//        if (this.getArguments() != null) {
-//            barcode = this.getArguments().getString("BARCODE", "");
-//
-//            // burada deger elinde oluyor artik dene bakalim
-//            etParcaAra.setText(barcode);
-//        }
+        if (this.getArguments() != null) {
+            barcode = this.getArguments().getString("BARCODE", "");
 
-//
-//        aztecScan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent myIntent = new Intent(getActivity(), ScanActivity.class);
-//                getActivity().startActivity(myIntent);//burda activityi baslatıyor
-//
-//            }
-//
-//
-//        });
+            // burada deger elinde oluyor artik dene bakalim
+            etParcaAra.setText(barcode);
+        }
+
+
+        aztecScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), ScanActivity.class);
+                getActivity().startActivity(myIntent);//burda activityi baslatıyor
+
+            }
+
+
+        });
 
 
         btBul.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +134,9 @@ public class UrunAraFragment extends Fragment {
                                 envanter = geciciList.get(position);
                                 Intent intent = new Intent(getActivity(), UrunDetaylariActivity.class);
                                 intent.putExtra("urunSorgusu", envanter);
+
                                 startActivity(intent);
+
                             } else {
 
                                 Toast.makeText(getContext(), "BÖYLE BİR KAYIT BULUNAMADI", Toast.LENGTH_LONG);

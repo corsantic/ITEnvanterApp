@@ -27,6 +27,9 @@
             android:text="AÇIKLAMA"
             android:textAlignment="center"/>
 
+
+
+
         <View style="@style/divider"/>
 
     </LinearLayout>

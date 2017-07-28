@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="90dp"
         android:orientation="vertical"
         android:layout_marginBottom="15dp">
 
@@ -44,16 +44,47 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/tvResimNoDetayPartNo"
+                android:id="@+id/tvUrunAdi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:text="ÜRÜN NUMARASI"
+                android:text="ÜRÜN ADI"
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/tvResimNoDetayPartNoDeger"
+                android:id="@+id/tvUrunAdiNo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="--"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+
+        </LinearLayout>
+
+        <View style="@style/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/tvModel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="MODELİ"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvModelNo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -75,16 +106,16 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/tvDimQuality"
+                android:id="@+id/tvMarka"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:text="MODELİ"
+                android:text="MARKA"
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/tvDimQualityDeger"
+                android:id="@+id/tvMarkaNo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -96,130 +127,68 @@
         </LinearLayout>
 
         <View style="@style/divider" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:background="#ffffff"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:padding="10dp"-->
-            <!--android:weightSum="1">-->
+            <TextView
+                android:id="@+id/tvKategori"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="KATEGORİ ADI"
+                android:textAlignment="center" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/tvResimNoDetayResimNo"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text=""-->
-                <!--android:textAlignment="center" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tvResimNoDetayResimNoDeger"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text="&#45;&#45;"-->
-                <!--android:textAlignment="center" />-->
-
-
-        <!--</LinearLayout>-->
-
-        <!--<View style="@style/divider" />-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:background="#ffffff"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:padding="10dp"-->
-            <!--android:weightSum="1">-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tvUnitMeas"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text="BİRİMİ"-->
-                <!--android:textAlignment="center" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tvUnitMeasDeger"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text="&#45;&#45;"-->
-                <!--android:textAlignment="center" />-->
+            <TextView
+                android:id="@+id/tvKategoriNo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="--"
+                android:textAlignment="center" />
 
 
-        <!--</LinearLayout>-->
-
-        <!--<View style="@style/divider" />-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:background="#ffffff"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:padding="10dp"-->
-            <!--android:weightSum="1">-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tvTuvMeasInfo"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text="ÖLÇÜSÜ"-->
-                <!--android:textAlignment="center" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tvTuvMeasInfoDeger"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text="&#45;&#45;"-->
-                <!--android:textAlignment="center" />-->
+        </LinearLayout>
 
 
-        <!--</LinearLayout>-->
 
-        <!--<View style="@style/divider" />-->
+        <View style="@style/divider" />
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:background="#ffffff"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:padding="10dp"-->
-            <!--android:weightSum="1">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
 
-            <!--<TextView-->
-                <!--android:id="@+id/tvTuvTsDin"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text="NORMU"-->
-                <!--android:textAlignment="center" />-->
+            <TextView
+                android:id="@+id/tvCreate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="EKLENME TARİHİ"
+                android:textAlignment="center" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/tvTuvTsDinDeger"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="0.5"-->
-                <!--android:gravity="center"-->
-                <!--android:text="&#45;&#45;"-->
-                <!--android:textAlignment="center" />-->
+            <TextView
+                android:id="@+id/tvCreateDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="--"
+                android:textAlignment="center" />
 
 
-        <!--</LinearLayout>-->
+        </LinearLayout>
 
-        <!--<View style="@style/divider" />-->
 
     </LinearLayout>
 

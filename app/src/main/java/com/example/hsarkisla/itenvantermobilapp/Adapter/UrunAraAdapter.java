@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
 import com.example.hsarkisla.itenvantermobilapp.R;
+import com.google.android.gms.vision.text.Text;
 
 import java.util.List;
 
@@ -24,10 +25,13 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
         public TextView twNumara;
         public TextView twNumaraAciklama;
 
+
+
         public MyViewHolder(View itemView) {
             super(itemView);
             twNumara = (TextView) itemView.findViewById(R.id.twNumara);
             twNumaraAciklama = (TextView) itemView.findViewById(R.id.twNumaraAciklama);
+
         }
 
     }
@@ -48,8 +52,10 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
     public void onBindViewHolder(UrunAraAdapter.MyViewHolder holder, int position) {
 
         Urun urunler = list.get(position);
-        holder.twNumara.setText(urunler.getUrunId());
+        holder.twNumara.setText(urunler.getBarcodeNo());
         holder.twNumaraAciklama.setText(urunler.getUrunAdi());
+
+
     }
 
     @Override

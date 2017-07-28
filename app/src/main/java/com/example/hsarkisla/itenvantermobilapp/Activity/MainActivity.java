@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     private boolean shouldLoadHomeFragOnBackPress = true;
     private String[] activityTitles;
     private Toolbar toolbar;
+    public String BARCODE = "";
 
     public static String CURRENT_TAG = TAG_URUN_ARA;
     @Override
@@ -67,19 +68,19 @@ public class MainActivity extends AppCompatActivity
             CURRENT_TAG = TAG_URUN_ARA;
             loadHomeFragment();
         }
-//        if (getIntent().getExtras() != null) {
-//            // barcode degerigini guncelliyoruz
-//            BARCODE = getIntent().getExtras().getString("BARCODE");
-//            // barcode var ise parca arayi ac
-//            if (!BARCODE.equals(""))
-//
-//            {
-//                navItemIndex = 2;
-//                CURRENT_TAG = TAG_PARCA_ARA;
-//                loadHomeFragment();
-//
-//            }
-//        }
+        if (getIntent().getExtras() != null) {
+            // barcode degerigini guncelliyoruz
+            BARCODE = getIntent().getExtras().getString("BARCODE");
+            // barcode var ise parca arayi ac
+            if (!BARCODE.equals(""))
+
+            {
+                navItemIndex = 0;
+                CURRENT_TAG = TAG_URUN_ARA;
+                loadHomeFragment();
+
+            }
+        }
     }
 
 
@@ -164,12 +165,12 @@ public class MainActivity extends AppCompatActivity
 
                 Fragment fragment = getHomeFragment();
 
-//                if (!BARCODE.equals("")) // barcode var ise onunla birlikte fragment'i baslatsin
-//                {
-//                    Bundle args = new Bundle();
-//                    args.putString("BARCODE", BARCODE);
-//                    fragment.setArguments(args);
-//                }
+                if (!BARCODE.equals("")) // barcode var ise onunla birlikte fragment'i baslatsin
+                {
+                    Bundle args = new Bundle();
+                    args.putString("BARCODE", BARCODE);
+                    fragment.setArguments(args);
+                }
 
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,

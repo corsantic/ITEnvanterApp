@@ -11,14 +11,87 @@ import java.util.Date;
 
 public class Personel implements Parcelable,Cloneable{
 
+    public int getPersonelId() {
+        return PersonelId;
+    }
+
+    public void setPersonelId(int personelId) {
+        PersonelId = personelId;
+    }
+
     private int PersonelId;
     private String PersonelAdi ;
+
+    public int getKategoriId() {
+        return KategoriId;
+    }
+
+    public void setKategoriId(int kategoriId) {
+        KategoriId = kategoriId;
+    }
+
+    public String getKategoriAdi() {
+        return KategoriAdi;
+    }
+
+    public void setKategoriAdi(String kategoriAdi) {
+        KategoriAdi = kategoriAdi;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public void setModel(String model) {
+        Model = model;
+    }
+
+    public String getBarcodeNo() {
+        return BarcodeNo;
+    }
+
+    public void setBarcodeNo(String barcodeNo) {
+        BarcodeNo = barcodeNo;
+    }
+
+    public String getCreateDate() {
+        return CreateDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        CreateDate = createDate;
+    }
+
+    public String getMarka() {
+        return Marka;
+    }
+
+    public void setMarka(String marka) {
+        Marka = marka;
+    }
+
+    public Personel getmInfo() {
+        return mInfo;
+    }
+
+    public void setmInfo(Personel mInfo) {
+        this.mInfo = mInfo;
+    }
+
     private int KategoriId ;
     private String KategoriAdi ;
     private String Model;
     private String BarcodeNo ;
     private String CreateDate ;
     private String Marka;
+
+    public String getPersonelAdi() {
+        return PersonelAdi;
+    }
+
+    public void setPersonelAdi(String personelAdi) {
+        PersonelAdi = personelAdi;
+    }
 
     private Personel mInfo;
 

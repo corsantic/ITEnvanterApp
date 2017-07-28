@@ -11,9 +11,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import com.example.hsarkisla.itenvantermobilapp.Fragment.UrunBilgileriFragment;
+import com.example.hsarkisla.itenvantermobilapp.Model.Kategori;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
 import com.example.hsarkisla.itenvantermobilapp.R;
 
@@ -26,21 +26,18 @@ import java.util.List;
 
 public class UrunDetaylariActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
     private Urun gelenUrunler;
+    private Kategori gelenKategori;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urun_detaylari);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -56,17 +53,14 @@ public class UrunDetaylariActivity extends AppCompatActivity {
 
         UrunBilgileriFragment urunBilgileriFragment = new UrunBilgileriFragment();
 
+        Bundle bundleUrun = new Bundle();
 
-        Bundle bundleParca = new Bundle();
-        Bundle bundleYer = new Bundle();
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        bundleParca.putParcelable("Ürün Detaylari", gelenUrunler);
-        urunBilgileriFragment.setArguments(bundleParca);
+        bundleUrun.putParcelable("UrunNoDetaylari", gelenUrunler);
+        urunBilgileriFragment.setArguments(bundleUrun);
 
-        bundleYer.putString("Ürün Adi", gelenUrunler.getUrunAdi());
-        urunBilgileriFragment.setArguments(bundleYer);
 
         adapter.addFragment(urunBilgileriFragment, "Ürün Bilgileri");
 

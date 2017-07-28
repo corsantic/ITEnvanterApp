@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.hsarkisla.itenvantermobilapp.Model.Kategori;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
 import com.example.hsarkisla.itenvantermobilapp.R;
+import com.google.android.gms.vision.text.Text;
 
 
 /**
@@ -19,18 +21,19 @@ import com.example.hsarkisla.itenvantermobilapp.R;
 
 public class UrunBilgileriFragment extends Fragment {
 
-    private TextView tvDescriptionDeger, tvResimNoDetayPartNoDeger, tvResimNoDetayResimNoDeger,
-            tvDimQualityDeger, tvUnitMeasDeger, tvTuvMeasInfoDeger, tvTuvTsDinDeger;
+    private TextView tvUrunAdi;
 
+    private TextView tvUrunModel,tvMarka,tvKategori,tvCreate;
     private Urun gelenUrunler;
 
-    private Bundle bundle;
 
-    public static UrunBilgileriFragment newInstance(Urun parcalar) {
+
+
+    public static UrunBilgileriFragment newInstance(Urun urunler) {
         UrunBilgileriFragment fragment = new UrunBilgileriFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putParcelable("Urun Detaylari", parcalar);
+        bundle.putParcelable("UrunNoDetaylari", urunler);
 
         fragment.setArguments(bundle);
 
@@ -51,14 +54,26 @@ public class UrunBilgileriFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab_urun_bilgileri, container, false);
 
-        tvDescriptionDeger = (TextView) view.findViewById(R.id.tvDescriptionDeger);
-
-
+        tvUrunAdi = (TextView) view.findViewById(R.id.tvUrunAdiNo);
+     tvUrunModel=(TextView) view.findViewById(R.id.tvModelNo);
+        tvCreate=(TextView) view.findViewById(R.id.tvCreateDate);
+        tvMarka=(TextView) view.findViewById(R.id.tvMarkaNo);
+        tvKategori=(TextView) view.findViewById(R.id.tvKategoriNo);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             gelenUrunler = bundle.getParcelable("UrunNoDetaylari");
             if (gelenUrunler.getUrunAdi() != null)
-                tvDescriptionDeger.setText(gelenUrunler.getUrunAdi() + "");
+                tvUrunAdi.setText(gelenUrunler.getUrunAdi() + "");
+            if (gelenUrunler.getModel() != null)
+                tvUrunModel.setText(gelenUrunler.getModel() + "");
+            if (gelenUrunler.getMarka() != null)
+                tvMarka.setText(gelenUrunler.getMarka() + "");
+            if (gelenUrunler.getKategoriAdi() != null)
+                tvKategori.setText(gelenUrunler.getKategoriAdi() + "");
+            if (gelenUrunler.getCreateDate() != null)
+                tvCreate.setText(gelenUrunler.getCreateDate() + "");
+
+
 
         }
 
