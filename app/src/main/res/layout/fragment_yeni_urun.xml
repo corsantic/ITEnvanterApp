@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="65dp"
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
@@ -44,7 +44,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="65dp"
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
@@ -75,7 +75,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="65dp"
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
@@ -105,7 +105,7 @@
         <View style="@style/divider" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="65dp"
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
@@ -138,7 +138,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="65dp"
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
@@ -168,7 +168,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="65dp"
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
@@ -206,7 +206,7 @@
     <ImageButton
         android:id="@+id/btAztec"
         android:layout_width="wrap_content"
-        android:layout_height="52dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:src="@drawable/aztec"
         android:textAlignment="center" />
@@ -215,7 +215,7 @@
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
-        android:layout_height="57dp"
+        android:layout_height="50dp"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName"

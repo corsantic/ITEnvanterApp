@@ -55,6 +55,25 @@ public class YeniUrunFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+//    Create new user
+//         **/
+//    User user = new User("morpheus", "leader");
+//    Call call1 = apiInterface.createUser(user);
+//        call1.enqueue(new Callback() {
+//        @Override
+//        public void onResponse(Call call, Response response) {
+//            User user1 = response.body();
+//
+//            Toast.makeText(getApplicationContext(), user1.name + " " + user1.job + " " + user1.id + " " + user1.createdAt, Toast.LENGTH_SHORT).show();
+//
+//        }
+//
+//        @Override
+//        public void onFailure(Call call, Throwable t) {
+//            call.cancel();
+//        }
+//    });
+
 
     @Override
     public void onDetach() {
