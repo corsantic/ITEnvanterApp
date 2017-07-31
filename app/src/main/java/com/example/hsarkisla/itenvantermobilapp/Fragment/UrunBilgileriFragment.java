@@ -62,8 +62,8 @@ public class UrunBilgileriFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             gelenUrunler = bundle.getParcelable("UrunNoDetaylari");
-            if (gelenUrunler.getUrunAdi() != null)
-                tvUrunAdi.setText(gelenUrunler.getUrunAdi() + "");
+            if (gelenUrunler.getUrunAciklama() != null)
+                tvUrunAdi.setText(gelenUrunler.getUrunAciklama() + "");
             if (gelenUrunler.getModel() != null)
                 tvUrunModel.setText(gelenUrunler.getModel() + "");
             if (gelenUrunler.getMarka() != null)

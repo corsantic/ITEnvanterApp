@@ -8,9 +8,13 @@ import java.util.List;
 
 import retrofit2.Call;
         import retrofit2.http.Body;
+        import retrofit2.http.Field;
+        import retrofit2.http.FormUrlEncoded;
         import retrofit2.http.GET;
+        import retrofit2.http.Header;
+        import retrofit2.http.Headers;
         import retrofit2.http.POST;
-        import retrofit2.http.PUT;
+
         import retrofit2.http.Path;
 
 
@@ -29,6 +33,16 @@ public interface APIService {
     @POST("api/Default/SetYeniUrun/{Urun}")
     Call<Urun> addUrun(@Body Urun urun);
 
+    @FormUrlEncoded
+    @POST("api/Default/SetYeniUrun/")
+    Call<Urun> addWitParametres(@Field("UrunAciklama") String title,
+                        @Field("KategoriId") int KategoriId ,
+                        @Field("UrunId") int UrunId,
+                        @Field("KategoriAdi") String KategoriAdi,
+                        @Field("Model") String Model,
+                        @Field("BarkodeNo") String Barcode,
+                        @Field("Marka") String Marka,
+                        @Field("CreateId")int CreateId);
 
 
 

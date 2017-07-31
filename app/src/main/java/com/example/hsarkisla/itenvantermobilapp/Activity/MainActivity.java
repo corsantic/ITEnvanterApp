@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity
             if (!BARCODE.equals(""))
 
             {
-                navItemIndex = 0;
-                CURRENT_TAG = TAG_URUN_ARA;
+                navItemIndex = 2;
+                CURRENT_TAG = TAG_YENİ_URUN;
                 loadHomeFragment();
 
             }

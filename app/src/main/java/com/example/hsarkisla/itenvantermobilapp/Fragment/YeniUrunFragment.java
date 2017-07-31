@@ -1,13 +1,35 @@
 package com.example.hsarkisla.itenvantermobilapp.Fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.hsarkisla.itenvantermobilapp.Activity.ScanActivity;
+import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
 import com.example.hsarkisla.itenvantermobilapp.R;
+import com.example.hsarkisla.itenvantermobilapp.Services.APIService;
+import com.google.android.gms.vision.text.Text;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class YeniUrunFragment extends Fragment {
@@ -15,9 +37,18 @@ public class YeniUrunFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+private Urun urun1;
 
+
+    private RecyclerView recyclerView;
     private String mParam1;
+    private EditText edtUrunAdi,edtUrunModel,edtUrunMarka,edtUrunKategoriAdi,edtUrunDesc;
+    private Button btEkle;
+    private TextView txCreateDate,txBarcode;
+    private ImageButton btAztecAdd;
+
     private String mParam2;
+    private String barcode;
 
     private OnFragmentInteractionListener mListener;
 
@@ -43,11 +74,99 @@ public class YeniUrunFragment extends Fragment {
         }
     }
 
+    public void UrunEkle()
+    {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://193.1.1.5/itenvanterapi/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService service = retrofit.create(APIService.class);
+    Urun urun=new Urun();
+        urun.setUrunAciklama(edtUrunAdi.getText().toString());
+        urun.setKategoriAdi(edtUrunKategoriAdi.getText().toString());
+     //   urun.setBarcodeNo(txBarcode.getText().toString());
+        urun.setMarka(edtUrunMarka.getText().toString());
+        urun.setModel(edtUrunModel.getText().toString());
+        urun.setKategoriId(43);
+        urun.setCreateDate("31.07.2017");
+        urun.setBarcodeNo("25252515454");
+        urun.setCreateId(1);
+
+
+
+
+       Call<Urun> call = service.addWitParametres(urun.getUrunAciklama(),urun.getKategoriId(),urun.getUrunId(),urun.getKategoriAdi(),urun.getModel()
+       ,urun.getBarcodeNo(),urun.getMarka(),urun.getCreateId());
+      //  Call<Urun> call=service.addUrun(urun);
+        call.enqueue(new Callback<Urun>() {
+                         @Override
+                         public void onResponse(Call<Urun> call, Response<Urun> response) {
+                             int statusCode = response.code();
+                             Log.e("Status Code", "" + statusCode);
+                             Log.d("TAG", "response" + response.body());
+                             urun1=response.body();
+
+                             if(response.isSuccessful()) {
+                                 Toast.makeText(getContext(),"Succes",Toast.LENGTH_LONG).show();
+
+                             }
+
+                         }
+
+                         @Override
+                         public void onFailure(Call<Urun> call, Throwable t) {
+
+                         }
+
+                     }
+        );
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_yeni_urun, container, false);
+        View view = inflater.inflate(R.layout.fragment_yeni_urun, container, false);
+        edtUrunAdi=(EditText) view.findViewById(R.id.urunAdiEdt);
+        edtUrunKategoriAdi=(EditText) view.findViewById(R.id.urunKategoriEdt);
+        edtUrunMarka=(EditText) view.findViewById(R.id.urunMarkaEdt);
+        edtUrunModel=(EditText) view.findViewById(R.id.urunModelEdt);
+
+        txBarcode=(TextView) view.findViewById(R.id.barcodeText);
+        txCreateDate=(TextView) view.findViewById(R.id.tvCreateDateTx);
+        btEkle=(Button) view.findViewById(R.id.btAdd);
+        btAztecAdd=(ImageButton) view.findViewById(R.id.btAztecAdd);
+
+
+        if (this.getArguments() != null) {
+            barcode = this.getArguments().getString("BARCODE", "");
+
+            // burada deger elinde oluyor
+            txBarcode.setText(barcode);
+        }
+
+        btAztecAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), ScanActivity.class);
+                getActivity().startActivity(myIntent);
+
+            }
+        });
+        btEkle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UrunEkle();
+            }
+        });
+
+        return view;
+
+
     }
 
     public void onButtonPressed(Uri uri) {
@@ -55,24 +174,6 @@ public class YeniUrunFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
-//    Create new user
-//         **/
-//    User user = new User("morpheus", "leader");
-//    Call call1 = apiInterface.createUser(user);
-//        call1.enqueue(new Callback() {
-//        @Override
-//        public void onResponse(Call call, Response response) {
-//            User user1 = response.body();
-//
-//            Toast.makeText(getApplicationContext(), user1.name + " " + user1.job + " " + user1.id + " " + user1.createdAt, Toast.LENGTH_SHORT).show();
-//
-//        }
-//
-//        @Override
-//        public void onFailure(Call call, Throwable t) {
-//            call.cancel();
-//        }
-//    });
 
 
     @Override

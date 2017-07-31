@@ -53,7 +53,7 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
 
         Urun urunler = list.get(position);
         holder.twNumara.setText(urunler.getBarcodeNo());
-        holder.twNumaraAciklama.setText(urunler.getUrunAdi());
+        holder.twNumaraAciklama.setText(urunler.getUrunAciklama());
 
 
     }
