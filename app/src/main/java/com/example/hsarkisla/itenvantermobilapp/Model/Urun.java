@@ -3,6 +3,7 @@ package com.example.hsarkisla.itenvantermobilapp.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
@@ -14,16 +15,49 @@ import java.util.Date;
 public class Urun implements Parcelable,Cloneable{
 
 
+    @SerializedName("UrunId")
+    @Expose
     private int UrunId;
+    @SerializedName("UrunAciklama")
+    @Expose
     private String UrunAciklama ;
+    @SerializedName("Model")
+    @Expose
     private String Model;
+    @SerializedName("BarkodNo")
+    @Expose
     private String BarcodeNo ;
+    @SerializedName("CreateDate")
+    @Expose
     private String CreateDate ;
+    @SerializedName("Marka")
+    @Expose
     private String Marka;
+    @SerializedName("KategoriAdi")
+    @Expose
     private String KategoriAdi;
+    @SerializedName("KategoriId")
+    @Expose
     private int KategoriId;
+    @SerializedName("CreateId")
+    @Expose
     private int CreateId;
 
+
+
+   public  Urun(int UrunId,String UrunAciklama,String Model,String BarcodeNo,String CreateDate,String Marka,String KategoriAdi,int KategoriId,int CreateId)
+    {
+        this.UrunId=UrunId;
+        this.UrunAciklama=UrunAciklama;
+        this.Model=Model;
+        this.Marka=Marka;
+        this.BarcodeNo=BarcodeNo;
+        this.CreateDate=CreateDate;
+        this.KategoriAdi=KategoriAdi;
+        this.KategoriId=KategoriId;
+        this.CreateId=CreateId;
+
+    }
 
 
 

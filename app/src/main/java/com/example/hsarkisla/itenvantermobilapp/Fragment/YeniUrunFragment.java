@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.hsarkisla.itenvantermobilapp.Activity.ScanActivity;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
+import com.example.hsarkisla.itenvantermobilapp.Other.ApiUtils;
 import com.example.hsarkisla.itenvantermobilapp.R;
 import com.example.hsarkisla.itenvantermobilapp.Services.APIService;
 import com.google.android.gms.vision.text.Text;
@@ -51,6 +52,8 @@ public class YeniUrunFragment extends Fragment {
     private String barcode;
 
     private OnFragmentInteractionListener mListener;
+    private APIService service;
+    private String TAG="TAG_RESPONSE";
 
     public YeniUrunFragment() {
         // Required empty public constructor
@@ -76,12 +79,8 @@ public class YeniUrunFragment extends Fragment {
 
     public void UrunEkle() {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://193.1.1.5/itenvanterapi/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        APIService service = retrofit.create(APIService.class);
+
         Urun urun = new Urun();
         urun.setUrunAciklama(edtUrunAdi.getText().toString());
         urun.setKategoriAdi(edtUrunKategoriAdi.getText().toString());
@@ -92,35 +91,33 @@ public class YeniUrunFragment extends Fragment {
         urun.setCreateDate("31.07.2017");
         urun.setBarcodeNo("25252515454");
         urun.setCreateId(1);
+        service = ApiUtils.getAPIService();
+
+        {
+     service.addWitParametres(urun.getKategoriId(), urun.getMarka(), urun.getModel(), urun.getBarcodeNo(), urun.getUrunAciklama()
+               , urun.getCreateId()).enqueue(new Callback<Urun>() {
+                @Override
+                public void onResponse(Call<Urun> call, Response<Urun> response) {
+
+                    if(response.isSuccessful()) {
+                        Log.i(TAG, "post submitted to API." + response.body().toString());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Urun> call, Throwable t) {
+                    Log.e(TAG, "Unable to submit post to API.");
+                }
+            });
+        }
+
+//        Call<Urun> call = service.addWitParametres(urun.getKategoriId(), urun.getMarka(), urun.getModel(), urun.getBarcodeNo(), urun.getUrunAciklama()
+//                , urun.getCreateId());
 
 
-     Call<Urun> call = service.addWitParametres(urun.getKategoriId(),urun.getMarka(),urun.getModel(),urun.getBarcodeNo(),urun.getUrunAciklama()
-      ,urun.getCreateId());
-        //Call<Urun> call = service.addUrun(urun);
-        call.enqueue(new Callback<Urun>() {
-                         @Override
-                         public void onResponse(Call<Urun> call, Response<Urun> response) {
-                             int statusCode = response.code();
-                             Log.e("Status Code", "" + statusCode);
-                             Log.d("TAG", "response" + response.body());
-                             urun1 = response.body();
 
-                             if (response.isSuccessful()) {
-                                 Toast.makeText(getContext(), "Succes", Toast.LENGTH_LONG).show();
 
-                             }
-
-                         }
-
-                         @Override
-                         public void onFailure(Call<Urun> call, Throwable t) {
-
-                         }
-
-                     }
-        );
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
