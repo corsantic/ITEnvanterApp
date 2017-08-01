@@ -94,9 +94,9 @@ public class YeniUrunFragment extends Fragment {
         urun.setCreateId(1);
 
 
-//       Call<Urun> call = service.addWitParametres(urun.getUrunAciklama(),urun.getKategoriId(),urun.getUrunId(),urun.getKategoriAdi(),urun.getModel()
-//       ,urun.getBarcodeNo(),urun.getMarka(),urun.getCreateId());
-        Call<Urun> call = service.addUrun(urun);
+     Call<Urun> call = service.addWitParametres(urun.getKategoriId(),urun.getMarka(),urun.getModel(),urun.getBarcodeNo(),urun.getUrunAciklama()
+      ,urun.getCreateId());
+        //Call<Urun> call = service.addUrun(urun);
         call.enqueue(new Callback<Urun>() {
                          @Override
                          public void onResponse(Call<Urun> call, Response<Urun> response) {
