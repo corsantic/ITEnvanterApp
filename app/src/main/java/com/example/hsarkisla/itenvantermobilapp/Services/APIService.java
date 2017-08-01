@@ -35,15 +35,13 @@ public interface APIService {
 
     @FormUrlEncoded
     @POST("api/Default/SetYeniUrun/")
-    Call<Urun> addWitParametres(@Field("UrunAciklama") String title,
-                        @Field("KategoriId") int KategoriId ,
-                        @Field("UrunId") int UrunId,
-                        @Field("KategoriAdi") String KategoriAdi,
-                        @Field("Model") String Model,
-                        @Field("BarkodeNo") String Barcode,
-                        @Field("Marka") String Marka,
-                        @Field("CreateId")int CreateId);
-
+    Call<Urun> addWitParametres(
+            @Field("KategoriId") int KategoriId,
+            @Field("Marka") String Marka,
+            @Field("Model") String Model,
+            @Field("BarkodNo") String Barcode,
+            @Field("UrunAciklama") String title,
+            @Field("CreateId") int CreateId);
 
 
 }
