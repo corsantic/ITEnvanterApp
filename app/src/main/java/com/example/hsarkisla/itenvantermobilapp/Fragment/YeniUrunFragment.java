@@ -87,14 +87,14 @@ public class YeniUrunFragment extends Fragment {
         //   urun.setBarcodeNo(txBarcode.getText().toString());
         urun.setMarka(edtUrunMarka.getText().toString());
         urun.setModel(edtUrunModel.getText().toString());
-        urun.setKategoriId(43);
+        urun.setKategoriId(17);
         urun.setCreateDate("31.07.2017");
         urun.setBarcodeNo("25252515454");
         urun.setCreateId(1);
         service = ApiUtils.getAPIService();
 
         {
-     service.addWitParametres(urun.getKategoriId(), urun.getMarka(), urun.getModel(), urun.getBarcodeNo(), urun.getUrunAciklama()
+     service.addWithParametres(urun.getKategoriId(), urun.getMarka(), urun.getModel(), urun.getBarcodeNo(), urun.getUrunAciklama()
                , urun.getCreateId()).enqueue(new Callback<Urun>() {
                 @Override
                 public void onResponse(Call<Urun> call, Response<Urun> response) {

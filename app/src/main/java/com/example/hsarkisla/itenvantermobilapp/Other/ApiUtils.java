@@ -11,7 +11,7 @@ public class ApiUtils {
 
     private ApiUtils() {}
 
-    public static final String BASE_URL = "http://193.1.1.5/itenvanterapi/";
+    public static final String BASE_URL = "http://localhost:51378/";
 
     public static APIService getAPIService() {
 
