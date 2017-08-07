@@ -1,6 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsarkisla.itenvantermobilapp.Fragment.UrunAraFragment">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etGive"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="75"
+
+                android:hint="Ürün Numarası" />
+
+            <Button
+                android:id="@+id/btGive"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_weight="0.5"
+                android:background="@color/colorAccent"
+                android:text="GETiR"
+                android:textAlignment="center">
+
+            </Button>
+
+            <ImageButton
+                android:id="@+id/btAztecGive"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:src="@drawable/aztec"
+                android:textAlignment="center" />
+
+
+        </LinearLayout>
+
+
+        <View style="@style/divider" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recUrunGive"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:scrollbars="vertical">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txLocation"
+                android:layout_width="74dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="LOKASYON"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/spLocation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <View style="@style/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etLocation"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="75"
+
+                android:hint="Personel Adı Giriniz" />
+
+            <Button
+                android:id="@+id/btLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_weight="0.5"
+                android:background="@color/colorAccent"
+                android:text="GETiR"
+                android:textAlignment="center">
+
+            </Button>
+
+
+
+
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recPersonel"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:scrollbars="vertical">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+        <View style="@style/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txMiktar"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="MİKTAR"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/edtMiktar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAlignment="center" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btTake"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_weight="0.35"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="ATA"
+            android:textAlignment="center"
+            android:textColor="#ffff">
+
+        </Button>
+    </LinearLayout>
+
+</FrameLayout>

@@ -22,7 +22,9 @@ import com.example.hsarkisla.itenvantermobilapp.Activity.ScanActivity;
 import com.example.hsarkisla.itenvantermobilapp.Activity.UrunDetaylariActivity;
 import com.example.hsarkisla.itenvantermobilapp.Adapter.UrunAraAdapter;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
+import com.example.hsarkisla.itenvantermobilapp.Other.ApiUtils;
 import com.example.hsarkisla.itenvantermobilapp.Other.RecyclerTouchListener;
+
 import com.example.hsarkisla.itenvantermobilapp.R;
 import com.example.hsarkisla.itenvantermobilapp.Services.APIService;
 
@@ -63,6 +65,7 @@ public class UrunAraFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private String barcode;
+    private APIService service;
 
     public UrunAraFragment() {
         // Required empty public constructor
@@ -147,6 +150,7 @@ public class UrunAraFragment extends Fragment {
                         @Override
                         public void onLongClick(View view, int position) {
 
+
                         }
                     }));
                 }
@@ -180,15 +184,9 @@ public class UrunAraFragment extends Fragment {
 
         girilenNo = Integer.parseInt(etParcaAra.getText().toString());
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://193.1.1.5/itenvanterapi/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        service = ApiUtils.getAPIService();
 
-        APIService service = retrofit.create(APIService.class);
-        Call<List<Urun>> call = service.getUrun(girilenNo);
-
-        call.enqueue(new Callback<List<Urun>>() {
+        service.getUrun(girilenNo).enqueue(new Callback<List<Urun>>() {
 
             @Override
             public void onResponse(Call<List<Urun>> call, Response<List<Urun>> response) {

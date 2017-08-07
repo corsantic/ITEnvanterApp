@@ -1,11 +1,14 @@
 package com.example.hsarkisla.itenvantermobilapp.Services;
 
 
+import com.example.hsarkisla.itenvantermobilapp.Model.Lokasyon;
+import com.example.hsarkisla.itenvantermobilapp.Model.Personel;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -25,6 +28,16 @@ public interface APIService {
     //GET by id
     @GET("api/Default/GetUrun/{id}")
     Call<List<Urun>> getUrun(@Path("id") int id);
+//Get Location by id
+    @GET("api/Default/GetLokasyon/{id}")
+    @Headers("Content-type: application/json")
+    Call<List<Lokasyon>> getLocation(@Path("id") int id);
+//Get all Location
+    @GET("api/Default/GetTumLokasyon")
+    Call<List<Lokasyon>>  getAllLocation();
+//Get Personel by id
+    @GET("api/Default/GetPersonel/{id}")
+    Call<List<Personel>> getPersonel(@Path("id") int id);
 
     //GET by Barcode
     @GET("api/Default/GetUrun/{BarcodeNo}")
@@ -34,15 +47,5 @@ public interface APIService {
     @POST("api/Default/SetYeniUrun/{Urun}")
     @Headers("Content-type: application/json")
     Call<Urun> addUrun(@Body Urun urun);
-    //Post With Field
-//    @Headers("Content-type: application/json")
-//    @FormUrlEncoded
-//    @POST("api/Default/SetYeniUrun")
-//    Call<Urun> addWithParametres(@Field("KategoriId") int KategoriId,
-//                                @Field("Model") String Model,
-//                                @Field("Marka") String Marka,
-//                                @Field("BarkodNo") String Barcode,
-//                                @Field("UrunAciklama") String UrunAciklama,
-//                                @Field("CreateId") int CreateId);
 
 }

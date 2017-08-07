@@ -57,7 +57,7 @@ public class YeniUrunFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private APIService service;
-    private String TAG="TAG_RESPONSE";
+    private String TAG = "TAG_RESPONSE";
 
     public YeniUrunFragment() {
         // Required empty public constructor
@@ -88,26 +88,24 @@ public class YeniUrunFragment extends Fragment {
         service = ApiUtils.getAPIService();
 
         {
-     service.addUrun(urun).enqueue(new Callback<Urun>() {
+            service.addUrun(urun).enqueue(new Callback<Urun>() {
                 @Override
                 public void onResponse(Call<Urun> call, Response<Urun> response) {
 
-                    if(response.isSuccessful()) {
-                      Toast.makeText(getContext(),"EKLENDİ",Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful()) {
+                        Toast.makeText(getContext(), "EKLENDİ", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Urun> call, Throwable t) {
-                    Toast.makeText(getContext(),"HATA",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "HATA", Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
 //        Call<Urun> call = service.addWitParametres(urun.getKategoriId(), urun.getMarka(), urun.getModel(), urun.getBarcodeNo(), urun.getUrunAciklama()
 //                , urun.getCreateId());
-
-
 
 
     }
@@ -128,21 +126,8 @@ public class YeniUrunFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_yeni_urun, container, false);
-        edtUrunAdi = (EditText) view.findViewById(R.id.urunAdiEdt);
-        edtUrunKategoriId = (EditText) view.findViewById(R.id.urunKategoriEdt);
-        edtUrunMarka = (EditText) view.findViewById(R.id.urunMarkaEdt);
-        edtUrunModel = (EditText) view.findViewById(R.id.urunModelEdt);
-        txBarcode = (TextView) view.findViewById(R.id.barcodeText);
-        txCreateDate = (TextView) view.findViewById(R.id.tvCreateDateTx);
-        btEkle = (Button) view.findViewById(R.id.btAdd);
-        btAztecAdd = (ImageButton) view.findViewById(R.id.btAztecAdd);
-
-
-        if (this.getArguments() != null) {
-            barcode = this.getArguments().getString("BARCODE", "");
-            // burada deger elinde oluyor
-            txBarcode.setText(barcode);
-        }
+        setView(view);
+        setBarcode();
 
         btAztecAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +147,25 @@ public class YeniUrunFragment extends Fragment {
         return view;
 
 
+    }
+
+    private void setBarcode() {
+        if (this.getArguments() != null) {
+            barcode = this.getArguments().getString("BARCODE", "");
+            // burada deger elinde oluyor
+            txBarcode.setText(barcode);
+        }
+    }
+
+    private void setView(View view) {
+        edtUrunAdi = (EditText) view.findViewById(R.id.urunAdiEdt);
+        edtUrunKategoriId = (EditText) view.findViewById(R.id.urunKategoriEdt);
+        edtUrunMarka = (EditText) view.findViewById(R.id.urunMarkaEdt);
+        edtUrunModel = (EditText) view.findViewById(R.id.urunModelEdt);
+        txBarcode = (TextView) view.findViewById(R.id.barcodeText);
+        txCreateDate = (TextView) view.findViewById(R.id.tvCreateDateTx);
+        btEkle = (Button) view.findViewById(R.id.btAdd);
+        btAztecAdd = (ImageButton) view.findViewById(R.id.btAztecAdd);
     }
 
     public void onButtonPressed(Uri uri) {

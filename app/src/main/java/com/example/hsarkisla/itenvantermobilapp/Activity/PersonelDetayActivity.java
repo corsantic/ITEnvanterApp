@@ -12,8 +12,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.hsarkisla.itenvantermobilapp.Fragment.PersonelBilgileriFragment;
 import com.example.hsarkisla.itenvantermobilapp.Fragment.UrunBilgileriFragment;
 import com.example.hsarkisla.itenvantermobilapp.Model.Kategori;
+import com.example.hsarkisla.itenvantermobilapp.Model.Personel;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
 import com.example.hsarkisla.itenvantermobilapp.R;
 
@@ -24,19 +26,19 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class UrunDetaylariActivity extends AppCompatActivity {
+public class PersonelDetayActivity extends AppCompatActivity {
 
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    private Urun gelenUrunler;
+    private Personel gelenPersonel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_urun_detaylari);
+        setContentView(R.layout.activity_personel_detaylari);
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -49,20 +51,20 @@ public class UrunDetaylariActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
 
-        gelenUrunler =  getIntent().getParcelableExtra("urunSorgusu");
+        gelenPersonel =  getIntent().getParcelableExtra("personelSorgusu");
 
-        UrunBilgileriFragment urunBilgileriFragment = new UrunBilgileriFragment();
+        PersonelBilgileriFragment personelBilgileriFragment = new PersonelBilgileriFragment();
 
-        Bundle bundleUrun = new Bundle();
+        Bundle bundlePersonel = new Bundle();
 
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        bundleUrun.putParcelable("UrunNoDetaylari", gelenUrunler);
-        urunBilgileriFragment.setArguments(bundleUrun);
+        bundlePersonel.putParcelable("PersonelDetaylari", gelenPersonel);
+        personelBilgileriFragment.setArguments(bundlePersonel);
 
 
-        adapter.addFragment(urunBilgileriFragment, "Ürün Bilgileri");
+        adapter.addFragment(personelBilgileriFragment, "Personel Bilgileri");
 
 
         viewPager.setAdapter(adapter);

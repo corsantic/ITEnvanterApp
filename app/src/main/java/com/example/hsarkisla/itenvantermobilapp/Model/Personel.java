@@ -9,7 +9,32 @@ import java.util.Date;
  * Created by pc on 26.07.2017.
  */
 
-public class Personel implements Parcelable,Cloneable{
+public class Personel implements Parcelable, Cloneable {
+
+
+    private int PersonelId;
+    private String PersonelAdi;
+    private String PersonelSoyadi;
+    private String PersonelSubeAdi;
+
+    private String SicilNo;
+    public String getPersonelSoyadi() {
+        return PersonelSoyadi;
+    }
+
+    public void setPersonelSoyadi(String personelSoyadi) {
+        PersonelSoyadi = personelSoyadi;
+    }
+
+    public String getPersonelSubeAdi() {
+        return PersonelSubeAdi;
+    }
+
+    public void setPersonelSubeAdi(String personelSubeAdi) {
+        PersonelSubeAdi = personelSubeAdi;
+    }
+
+
 
     public int getPersonelId() {
         return PersonelId;
@@ -19,56 +44,6 @@ public class Personel implements Parcelable,Cloneable{
         PersonelId = personelId;
     }
 
-    private int PersonelId;
-    private String PersonelAdi ;
-
-    public int getKategoriId() {
-        return KategoriId;
-    }
-
-    public void setKategoriId(int kategoriId) {
-        KategoriId = kategoriId;
-    }
-
-    public String getKategoriAdi() {
-        return KategoriAdi;
-    }
-
-    public void setKategoriAdi(String kategoriAdi) {
-        KategoriAdi = kategoriAdi;
-    }
-
-    public String getModel() {
-        return Model;
-    }
-
-    public void setModel(String model) {
-        Model = model;
-    }
-
-    public String getBarcodeNo() {
-        return BarcodeNo;
-    }
-
-    public void setBarcodeNo(String barcodeNo) {
-        BarcodeNo = barcodeNo;
-    }
-
-    public String getCreateDate() {
-        return CreateDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        CreateDate = createDate;
-    }
-
-    public String getMarka() {
-        return Marka;
-    }
-
-    public void setMarka(String marka) {
-        Marka = marka;
-    }
 
     public Personel getmInfo() {
         return mInfo;
@@ -78,12 +53,6 @@ public class Personel implements Parcelable,Cloneable{
         this.mInfo = mInfo;
     }
 
-    private int KategoriId ;
-    private String KategoriAdi ;
-    private String Model;
-    private String BarcodeNo ;
-    private String CreateDate ;
-    private String Marka;
 
     public String getPersonelAdi() {
         return PersonelAdi;
@@ -118,27 +87,23 @@ public class Personel implements Parcelable,Cloneable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(PersonelAdi);
-        dest.writeString(KategoriAdi);
-        dest.writeString(Model);
-        dest.writeString(BarcodeNo);
-        dest.writeString(Marka);
-        dest.writeString(CreateDate);
-        dest.writeInt(KategoriId);
+
         dest.writeInt(PersonelId);
+        dest.writeString(SicilNo);
+        dest.writeString(PersonelAdi);
+        dest.writeString(PersonelSoyadi);
+        dest.writeString(PersonelSubeAdi);
+
 
     }
 
     private Personel(Parcel in) {
 
-        PersonelAdi = in.readString();
-        KategoriAdi = in.readString();
-        Marka = in.readString();
-        BarcodeNo = in.readString();
-        CreateDate = in.readString();
-        KategoriId = in.readInt();
         PersonelId = in.readInt();
-
+        SicilNo=in.readString();
+        PersonelAdi = in.readString();
+        PersonelSoyadi = in.readString();
+        PersonelSubeAdi = in.readString();
 
 
         mInfo = in.readParcelable(Personel.class.getClassLoader());
@@ -157,4 +122,11 @@ public class Personel implements Parcelable,Cloneable{
         }
     };
 
+    public String getSicilNo() {
+        return SicilNo;
+    }
+
+    public void setSicilNo(String sicilNo) {
+        SicilNo = sicilNo;
+    }
 }
