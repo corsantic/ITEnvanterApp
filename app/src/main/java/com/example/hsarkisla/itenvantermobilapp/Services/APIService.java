@@ -32,16 +32,17 @@ public interface APIService {
 
     //ADD New Urun
     @POST("api/Default/SetYeniUrun/{Urun}")
+    @Headers("Content-type: application/json")
     Call<Urun> addUrun(@Body Urun urun);
     //Post With Field
-    @Headers("Content-type: application/json")
-    @FormUrlEncoded
-    @POST("api/Default/SetYeniUrun")
-    Call<Urun> addWithParametres(@Field("KategoriId") int KategoriId,
-                                @Field("Model") String Model,
-                                @Field("Marka") String Marka,
-                                @Field("BarkodNo") String Barcode,
-                                @Field("UrunAciklama") String UrunAciklama,
-                                @Field("CreateId") int CreateId);
+//    @Headers("Content-type: application/json")
+//    @FormUrlEncoded
+//    @POST("api/Default/SetYeniUrun")
+//    Call<Urun> addWithParametres(@Field("KategoriId") int KategoriId,
+//                                @Field("Model") String Model,
+//                                @Field("Marka") String Marka,
+//                                @Field("BarkodNo") String Barcode,
+//                                @Field("UrunAciklama") String UrunAciklama,
+//                                @Field("CreateId") int CreateId);
 
 }

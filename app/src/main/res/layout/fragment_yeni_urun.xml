@@ -117,7 +117,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:text="KATEGORİ ADI"
+                android:text="KATEGORİ ID"
                 android:textAlignment="center" />
 
             <EditText

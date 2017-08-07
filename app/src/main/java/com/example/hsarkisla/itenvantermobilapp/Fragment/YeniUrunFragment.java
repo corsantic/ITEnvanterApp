@@ -26,6 +26,10 @@ import com.example.hsarkisla.itenvantermobilapp.R;
 import com.example.hsarkisla.itenvantermobilapp.Services.APIService;
 import com.google.android.gms.vision.text.Text;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,10 +44,10 @@ public class YeniUrunFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private Urun urun1;
 
-
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private RecyclerView recyclerView;
     private String mParam1;
-    private EditText edtUrunAdi, edtUrunModel, edtUrunMarka, edtUrunKategoriAdi, edtUrunDesc;
+    private EditText edtUrunAdi, edtUrunModel, edtUrunMarka, edtUrunKategoriId, edtUrunDesc;
     private Button btEkle;
     private TextView txCreateDate, txBarcode;
     private ImageButton btAztecAdd;
@@ -78,24 +82,13 @@ public class YeniUrunFragment extends Fragment {
     }
 
     public void UrunEkle() {
-
-
-
         Urun urun = new Urun();
-        urun.setUrunAciklama(edtUrunAdi.getText().toString());
-        urun.setKategoriAdi(edtUrunKategoriAdi.getText().toString());
-        //   urun.setBarcodeNo(txBarcode.getText().toString());
-        urun.setMarka(edtUrunMarka.getText().toString());
-        urun.setModel(edtUrunModel.getText().toString());
-        urun.setKategoriId(17);
-        urun.setCreateDate("31.07.2017");
-        urun.setBarcodeNo("25252515454");
-        urun.setCreateId(1);
+        Date date = new Date();
+        setUrun(urun, date);//urunu doldur
         service = ApiUtils.getAPIService();
 
         {
-     service.addWithParametres(urun.getKategoriId(), urun.getMarka(), urun.getModel(), urun.getBarcodeNo(), urun.getUrunAciklama()
-               , urun.getCreateId()).enqueue(new Callback<Urun>() {
+     service.addUrun(urun).enqueue(new Callback<Urun>() {
                 @Override
                 public void onResponse(Call<Urun> call, Response<Urun> response) {
 
@@ -119,13 +112,23 @@ public class YeniUrunFragment extends Fragment {
 
     }
 
+    private void setUrun(Urun urun, Date date) {
+        urun.setUrunAciklama(edtUrunAdi.getText().toString());
+        urun.setKategoriId(Integer.valueOf(edtUrunKategoriId.getText().toString()));
+        urun.setMarka(edtUrunMarka.getText().toString());
+        urun.setModel(edtUrunModel.getText().toString());
+        urun.setBarcodeNo(txBarcode.getText().toString());
+        urun.setCreateId(1);
+        urun.setCreateDate(dateFormat.format(date));
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_yeni_urun, container, false);
         edtUrunAdi = (EditText) view.findViewById(R.id.urunAdiEdt);
-        edtUrunKategoriAdi = (EditText) view.findViewById(R.id.urunKategoriEdt);
+        edtUrunKategoriId = (EditText) view.findViewById(R.id.urunKategoriEdt);
         edtUrunMarka = (EditText) view.findViewById(R.id.urunMarkaEdt);
         edtUrunModel = (EditText) view.findViewById(R.id.urunModelEdt);
 
@@ -137,7 +140,6 @@ public class YeniUrunFragment extends Fragment {
 
         if (this.getArguments() != null) {
             barcode = this.getArguments().getString("BARCODE", "");
-
             // burada deger elinde oluyor
             txBarcode.setText(barcode);
         }
