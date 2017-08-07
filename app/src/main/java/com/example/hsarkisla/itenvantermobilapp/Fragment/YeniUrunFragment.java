@@ -93,13 +93,13 @@ public class YeniUrunFragment extends Fragment {
                 public void onResponse(Call<Urun> call, Response<Urun> response) {
 
                     if(response.isSuccessful()) {
-                        Log.i(TAG, "post submitted to API." + response.body().toString());
+                      Toast.makeText(getContext(),"EKLENDİ",Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Urun> call, Throwable t) {
-                    Log.e(TAG, "Unable to submit post to API.");
+                    Toast.makeText(getContext(),"HATA",Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -120,6 +120,7 @@ public class YeniUrunFragment extends Fragment {
         urun.setBarcodeNo(txBarcode.getText().toString());
         urun.setCreateId(1);
         urun.setCreateDate(dateFormat.format(date));
+        txCreateDate.setText(urun.getCreateDate());
     }
 
     @Override
@@ -131,7 +132,6 @@ public class YeniUrunFragment extends Fragment {
         edtUrunKategoriId = (EditText) view.findViewById(R.id.urunKategoriEdt);
         edtUrunMarka = (EditText) view.findViewById(R.id.urunMarkaEdt);
         edtUrunModel = (EditText) view.findViewById(R.id.urunModelEdt);
-
         txBarcode = (TextView) view.findViewById(R.id.barcodeText);
         txCreateDate = (TextView) view.findViewById(R.id.tvCreateDateTx);
         btEkle = (Button) view.findViewById(R.id.btAdd);
