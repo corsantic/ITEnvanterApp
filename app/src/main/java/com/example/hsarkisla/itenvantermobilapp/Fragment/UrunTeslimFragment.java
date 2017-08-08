@@ -27,6 +27,7 @@ import com.example.hsarkisla.itenvantermobilapp.Activity.ScanActivity;
 import com.example.hsarkisla.itenvantermobilapp.Activity.UrunDetaylariActivity;
 import com.example.hsarkisla.itenvantermobilapp.Adapter.PersonelGetAdapter;
 import com.example.hsarkisla.itenvantermobilapp.Adapter.UrunAraAdapter;
+import com.example.hsarkisla.itenvantermobilapp.Model.Envanter;
 import com.example.hsarkisla.itenvantermobilapp.Model.Lokasyon;
 import com.example.hsarkisla.itenvantermobilapp.Model.Personel;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
@@ -34,6 +35,7 @@ import com.example.hsarkisla.itenvantermobilapp.Other.ApiUtils;
 import com.example.hsarkisla.itenvantermobilapp.Other.RecyclerTouchListener;
 import com.example.hsarkisla.itenvantermobilapp.R;
 import com.example.hsarkisla.itenvantermobilapp.Services.APIService;
+import com.google.android.gms.common.api.Api;
 
 import java.util.List;
 
@@ -109,6 +111,30 @@ private List<Lokasyon> getLocationList;
 
 
     }
+//todo Envanter Ekleme Yapılacak
+//    public void EnvanterEkle()
+//    {
+//        Envanter envanter=new Envanter();
+//
+//
+//        service= ApiUtils.getAPIService();
+//
+//        service.addEnvanter(envanter).enqueue(new Callback<Envanter>() {
+//            @Override
+//            public void onResponse(Call<Envanter> call, Response<Envanter> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Envanter> call, Throwable t) {
+//
+//            }
+//        });
+//
+//
+//
+//    }
+//
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
@@ -124,23 +150,18 @@ private List<Lokasyon> getLocationList;
         spLocation=(Spinner) view.findViewById(R.id.spLocation);
         etLocation=(EditText) view.findViewById(R.id.etLocation);
         btLocation=(Button) view.findViewById(R.id.btLocation);
-
        FillLocation();//Lokasyonu dolduruyor
-
         if (this.getArguments() != null) {
             barcode = this.getArguments().getString("BARCODE", "");
 
             // burada deger elinde oluyor artik dene bakalim
             etGive.setText(barcode);
         }
-
-
         aztecScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(getActivity(), ScanActivity.class);
                 getActivity().startActivity(myIntent);//burda activityi baslatıyor
-
             }
 
 
@@ -159,6 +180,7 @@ private List<Lokasyon> getLocationList;
 
                             try {
                                 mPersonelGetAdapter.setSelected(position);
+                                personel=geciciPersList.get(position);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -255,6 +277,7 @@ private List<Lokasyon> getLocationList;
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
         //setting adapter to spinner
         spLocation.setAdapter(adapter);
+
         //Creating an array adapter for list view
 
     }
@@ -304,8 +327,6 @@ private List<Lokasyon> getLocationList;
     public List<Lokasyon> FillLocation()
     {
         service = ApiUtils.getAPIService();
-
-
         {
             service.getAllLocation().enqueue(new Callback<List<Lokasyon>>() {
                 @Override
@@ -313,6 +334,7 @@ private List<Lokasyon> getLocationList;
 
                     if (response.isSuccessful()) {
                         locationList=response.body();
+
                         Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                         showListinSpinner();
                     }
