@@ -3,6 +3,8 @@ package com.example.hsarkisla.itenvantermobilapp.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
@@ -13,9 +15,14 @@ public class Personel implements Parcelable, Cloneable {
 
 
     private int PersonelId;
+    @SerializedName("Adi")
     private String PersonelAdi;
+    @SerializedName("Soyadi")
     private String PersonelSoyadi;
+    @SerializedName("SubeAdi")
     private String PersonelSubeAdi;
+    private boolean selected;
+
 
     private String SicilNo;
     public String getPersonelSoyadi() {
@@ -128,5 +135,13 @@ public class Personel implements Parcelable, Cloneable {
 
     public void setSicilNo(String sicilNo) {
         SicilNo = sicilNo;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

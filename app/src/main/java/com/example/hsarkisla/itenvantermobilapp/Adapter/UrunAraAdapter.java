@@ -1,6 +1,10 @@
 package com.example.hsarkisla.itenvantermobilapp.Adapter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +24,8 @@ import java.util.List;
 public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHolder> {
 
     private List<Urun> list;
-
+    private SharedPreferences mPref;
+    private SharedPreferences.Editor mEditor;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView twNumara;
         public TextView twNumaraAciklama;
@@ -35,9 +40,24 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
         }
 
     }
+    public void setSelected(int pos) {
+        try {
+            if (list.size() > 1) {
+                list.get(mPref.getInt("position", 0)).setSelected(false);
+                mEditor.putInt("position", pos);
+                mEditor.commit();
+            }
+            list.get(pos).setSelected(true);
+            notifyDataSetChanged();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    public UrunAraAdapter(List<Urun> list) {
+    public UrunAraAdapter(List<Urun> list,Context context) {
         this.list = list;
+        mPref = context.getSharedPreferences("urun", Context.MODE_PRIVATE);
+        mEditor = mPref.edit();
     }
 
     @Override
@@ -54,8 +74,12 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
         Urun urunler = list.get(position);
         holder.twNumara.setText(urunler.getBarcodeNo());
         holder.twNumaraAciklama.setText(urunler.getUrunAciklama());
-
-
+        Log.e("selection", "" + list.get(position).isSelected());
+        if (list.get(position).isSelected()) {
+            holder.itemView.setBackgroundColor(Color.RED);
+        } else {
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+        }
     }
 
     @Override

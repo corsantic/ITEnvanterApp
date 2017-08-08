@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.hsarkisla.itenvantermobilapp.Activity.PersonelDetayActivity;
 import com.example.hsarkisla.itenvantermobilapp.Activity.ScanActivity;
 import com.example.hsarkisla.itenvantermobilapp.Activity.UrunDetaylariActivity;
 import com.example.hsarkisla.itenvantermobilapp.Adapter.PersonelGetAdapter;
@@ -57,7 +59,7 @@ public class UrunTeslimFragment extends Fragment {
     private List<Personel> geciciPersList;
     private RecyclerView urunListesi;
     private RecyclerView personelList;
-    private List<Lokasyon> lokasyonList;
+
 
     private UrunAraAdapter mUrunNoAdapter;
     private PersonelGetAdapter mPersonelGetAdapter;
@@ -79,8 +81,9 @@ public class UrunTeslimFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private String barcode;
     private APIService service;
-    private List<Lokasyon> listlok;
+private List<Lokasyon> getLocationList;
     private int girilenId;
+    private List<Lokasyon> locationList;
 
     public UrunTeslimFragment() {
         // Required empty public constructor
@@ -116,19 +119,13 @@ public class UrunTeslimFragment extends Fragment {
         etGive = (EditText) view.findViewById(R.id.etGive);
         btGive = (Button) view.findViewById(R.id.btGive);
         urunListesi = (RecyclerView) view.findViewById(R.id.recUrunGive);
+        personelList=(RecyclerView) view.findViewById(R.id.recPersonel) ;
         aztecScan = (ImageButton) view.findViewById(R.id.btAztecGive);
         spLocation=(Spinner) view.findViewById(R.id.spLocation);
         etLocation=(EditText) view.findViewById(R.id.etLocation);
         btLocation=(Button) view.findViewById(R.id.btLocation);
 
-
-     //   fetchLocation();
-
-
-
-
-
-
+       FillLocation();//Lokasyonu dolduruyor
 
         if (this.getArguments() != null) {
             barcode = this.getArguments().getString("BARCODE", "");
@@ -159,9 +156,19 @@ public class UrunTeslimFragment extends Fragment {
                         @Override
                         public void onClick(View view, int position) {
 
+
+                            try {
+                                mPersonelGetAdapter.setSelected(position);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onLongClick(View view, int position) {
                             if (personelList != null) {
                                 personel = geciciPersList.get(position);
-                                Intent intent = new Intent(getActivity(), UrunDetaylariActivity.class);
+                                Intent intent = new Intent(getActivity(), PersonelDetayActivity.class);
                                 intent.putExtra("personelSorgusu", personel);
 
                                 startActivity(intent);
@@ -170,12 +177,6 @@ public class UrunTeslimFragment extends Fragment {
 
                                 Toast.makeText(getContext(), "BÖYLE BİR KAYIT BULUNAMADI", Toast.LENGTH_LONG);
                             }
-
-                        }
-
-                        @Override
-                        public void onLongClick(View view, int position) {
-
                         }
                     }));
                 }
@@ -193,6 +194,15 @@ public class UrunTeslimFragment extends Fragment {
                         @Override
                         public void onClick(View view, int position) {
 
+                            try {
+                                mUrunNoAdapter.setSelected(position);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onLongClick(View view, int position) {
                             if (geciciList != null) {
                                 envanter = geciciList.get(position);
                                 Intent intent = new Intent(getActivity(), UrunDetaylariActivity.class);
@@ -206,11 +216,6 @@ public class UrunTeslimFragment extends Fragment {
                             }
 
                         }
-
-                        @Override
-                        public void onLongClick(View view, int position) {
-
-                        }
                     }));
                 }
 
@@ -220,24 +225,7 @@ public class UrunTeslimFragment extends Fragment {
         return view;
     }
 
-//    private void loadSpinnerData() {
-//        // database handler
-//      //  DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-//            List<String>=service.getAllLocation().;
-//        // Spinner Drop down elements
-//      //  List<String> lables = db.getAllLabels();
-//
-//        // Creating adapter for spinner
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item);
-//
-//        // Drop down layout style - list view with radio button
-//        dataAdapter
-//                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        // attaching data adapter to spinner
-//        spinner.setAdapter(dataAdapter);
-//    }
+
 
 
     public void onButtonPressed(Uri uri) {
@@ -251,58 +239,34 @@ public class UrunTeslimFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-//
-//    private void showListinSpinner(){
-//        //String array to store all the book names
-//        String[] items = new String[lokasyonList.size()];
-//
-//        //Traversing through the whole list to get all the names
-//        for(int i=0; i<lokasyonList.size(); i++){
-//            //Storing names to string array
-//            items[i] = lokasyonList.get(i).getLokasyonAdi();
-//        }
-//
-//        //Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-//        ArrayAdapter<String> adapter;
-//        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
-//        //setting adapter to spinner
-//        spLocation.setAdapter(adapter);
-//        //Creating an array adapter for list view
-//
-//    }
-//    private void fetchLocation(){
-//
-//        //While the app fetched data we are displaying a progress dialog
-//        final ProgressDialog loading = ProgressDialog.show(getActivity(), "Fetching Data", "Please wait...", false, false);
-//        service = ApiUtils.getAPIService();
-//
-//        //Defining the method
-//        service.getAllLocation().enqueue(new Callback<List<Lokasyon>>() {
-//            @Override
-//            public void onResponse(Call<List<Lokasyon>> call, Response<List<Lokasyon>> response) {
-//                //Dismissing the loading progressbar
-//                loading.dismiss();
-//                Log.d("JSON  LIST",listlok.toString());
-//                //Storing the data in our list
-//                lokasyonList = listlok;
-//                //Calling a method to show the list
-//                showListinSpinner();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Lokasyon>> call, Throwable t) {
-//
-//            }
-//
-//
-//        });
-//    }
+
+    private void showListinSpinner(){
+        //String array to store all the book names
+        String[] items = new String[locationList.size()];
+
+        //Traversing through the whole list to get all the names
+        for(int i=0; i<locationList.size(); i++){
+            //Storing names to string array
+            items[i] = locationList.get(i).getLokasyonAdi();
+        }
+
+        //Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
+        //setting adapter to spinner
+        spLocation.setAdapter(adapter);
+        //Creating an array adapter for list view
+
+    }
+
 
     public interface OnFragmentInteractionListener {
 
         void onFragmentInteraction(Uri uri);
     }
 
+
+    /** Ürün*/
     public void UrunListesi() {
 
         girilenNo = Integer.parseInt(etGive.getText().toString());
@@ -320,7 +284,7 @@ public class UrunTeslimFragment extends Fragment {
                 list = response.body();
                 geciciList = list;
                 if (geciciList != null) {
-                    mUrunNoAdapter = new UrunAraAdapter(geciciList);
+                    mUrunNoAdapter = new UrunAraAdapter(geciciList,getContext());
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                     urunListesi.setLayoutManager(mLayoutManager);
                     urunListesi.setItemAnimator(new DefaultItemAnimator());
@@ -334,9 +298,44 @@ public class UrunTeslimFragment extends Fragment {
             }
         });
     }
+
+
+    /**Lokayon*/
+    public List<Lokasyon> FillLocation()
+    {
+        service = ApiUtils.getAPIService();
+
+
+        {
+            service.getAllLocation().enqueue(new Callback<List<Lokasyon>>() {
+                @Override
+                public void onResponse(Call<List<Lokasyon>> call, Response<List<Lokasyon>> response) {
+
+                    if (response.isSuccessful()) {
+                        locationList=response.body();
+                        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                        showListinSpinner();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Lokasyon>> call, Throwable t) {
+                    Toast.makeText(getContext(), "HATA", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+return locationList;
+
+
+
+    }
+
+
+/**Personel*/
     public void PersonelListesi() {
 
-        girilenId =  Integer.parseInt(etLocation.getText().toString());
+        girilenId = Integer.parseInt (etLocation.getText().toString());
 
         service = ApiUtils.getAPIService();
 
@@ -349,7 +348,7 @@ public class UrunTeslimFragment extends Fragment {
                 listPerson = response.body();
                 geciciPersList = listPerson;
                 if (geciciPersList != null) {
-                    mPersonelGetAdapter = new PersonelGetAdapter(geciciPersList);
+                    mPersonelGetAdapter = new PersonelGetAdapter(geciciPersList,getContext());
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                     personelList.setLayoutManager(mLayoutManager);
                     personelList.setItemAnimator(new DefaultItemAnimator());

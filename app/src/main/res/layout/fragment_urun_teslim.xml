@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hsarkisla.itenvantermobilapp.Fragment.UrunAraFragment">
+    tools:context="com.example.hsarkisla.itenvantermobilapp.Fragment.UrunTeslimFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,34 +53,13 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recUrunGive"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
-            android:scrollbars="vertical">
+            android:layout_height="38dp"
+            android:scrollbars="vertical"
+            android:layout_weight="0.36">
 
         </android.support.v7.widget.RecyclerView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:background="#ffffff"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:weightSum="1">
 
-            <TextView
-                android:id="@+id/txLocation"
-                android:layout_width="74dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="LOKASYON"
-                android:textAlignment="center" />
-
-            <Spinner
-                android:id="@+id/spLocation"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAlignment="center" />
-        </LinearLayout>
 
         <View style="@style/divider" />
 
@@ -112,18 +91,41 @@
 
 
 
-
-
-
         </LinearLayout>
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recPersonel"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
-            android:scrollbars="vertical">
+            android:layout_height="35dp"
+            android:scrollbars="vertical"
+            android:layout_weight="0.40">
 
         </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1"
+            android:layout_weight="0.16">
+
+            <TextView
+                android:id="@+id/txLocation"
+                android:layout_width="74dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="LOKASYON"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/spLocation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAlignment="center" />
+        </LinearLayout>
 
 
         <View style="@style/divider" />
@@ -134,7 +136,8 @@
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:layout_weight="0.07">
 
             <TextView
                 android:id="@+id/txMiktar"
@@ -159,7 +162,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_weight="0.35"
+            android:layout_weight="0.01"
             android:background="#000000"
             android:gravity="center"
             android:text="ATA"

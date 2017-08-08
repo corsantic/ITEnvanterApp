@@ -37,6 +37,7 @@ public interface APIService {
     Call<List<Lokasyon>>  getAllLocation();
 //Get Personel by id
     @GET("api/Default/GetPersonel/{id}")
+    @Headers("Content-type: application/json")
     Call<List<Personel>> getPersonel(@Path("id") int id);
 
     //GET by Barcode

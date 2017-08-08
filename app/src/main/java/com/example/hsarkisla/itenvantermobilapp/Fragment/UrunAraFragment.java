@@ -133,6 +133,17 @@ public class UrunAraFragment extends Fragment {
                         @Override
                         public void onClick(View view, int position) {
 
+                            try {
+                                mUrunNoAdapter.setSelected(position);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                }
+
+                        @Override
+                        public void onLongClick(View view, int position) {
                             if (geciciList != null) {
                                 envanter = geciciList.get(position);
                                 Intent intent = new Intent(getActivity(), UrunDetaylariActivity.class);
@@ -144,13 +155,6 @@ public class UrunAraFragment extends Fragment {
 
                                 Toast.makeText(getContext(), "BÖYLE BİR KAYIT BULUNAMADI", Toast.LENGTH_LONG);
                             }
-
-                        }
-
-                        @Override
-                        public void onLongClick(View view, int position) {
-
-
                         }
                     }));
                 }
@@ -197,7 +201,7 @@ public class UrunAraFragment extends Fragment {
                     list = response.body();
                     geciciList = list;
                     if (geciciList != null) {
-                        mUrunNoAdapter = new UrunAraAdapter(geciciList);
+                        mUrunNoAdapter = new UrunAraAdapter(geciciList,getContext());
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                         urunListesi.setLayoutManager(mLayoutManager);
                         urunListesi.setItemAnimator(new DefaultItemAnimator());

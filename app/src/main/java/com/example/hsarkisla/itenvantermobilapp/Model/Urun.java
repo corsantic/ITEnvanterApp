@@ -42,10 +42,16 @@ public class Urun implements Parcelable,Cloneable{
     @SerializedName("CreateId")
     @Expose
     private int CreateId;
+    private boolean selected;
+    public boolean isSelected() {
+        return selected;
+    }
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
 
-
-   public  Urun(int UrunId,String UrunAciklama,String Model,String BarcodeNo,String CreateDate,String Marka,String KategoriAdi,int KategoriId,int CreateId)
+    public  Urun(int UrunId,String UrunAciklama,String Model,String BarcodeNo,String CreateDate,String Marka,String KategoriAdi,int KategoriId,int CreateId)
     {
         this.UrunId=UrunId;
         this.UrunAciklama=UrunAciklama;

@@ -10,24 +10,24 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/twLokasyon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/twLokasyonNo"
-            android:text="K12.27.02.0022"
+            android:layout_height="match_parent"
             android:textSize="16dp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:text=" ad"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/twLokasyonDesc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:textSize="16dp"
             android:textStyle="bold"
             android:maxLines="2"
-            android:text="AÇIKLAMA"
+            android:text="soyad"
             android:textAlignment="center"/>
-
-
 
 
         <View style="@style/divider"/>

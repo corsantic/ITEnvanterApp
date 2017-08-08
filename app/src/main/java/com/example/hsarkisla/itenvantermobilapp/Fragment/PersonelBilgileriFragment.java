@@ -53,10 +53,10 @@ public class PersonelBilgileriFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tab_urun_bilgileri, container, false);
+        View view = inflater.inflate(R.layout.fragment_tab_personel_bilgileri, container, false);
 
         tvPersonelAdi = (TextView) view.findViewById(R.id.tvPersonel);
-    tvPersonelSicilNo=(TextView) view.findViewById(R.id.tvSicilNo);
+    tvPersonelSicilNo=(TextView) view.findViewById(R.id.tvPersonelSicilNo);
         tvPersonelSoyadi=(TextView) view.findViewById(R.id.tvPersonelSoyadi);
         tvPersonelSube=(TextView) view.findViewById(R.id.tvSubeAdi);
 
