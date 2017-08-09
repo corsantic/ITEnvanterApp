@@ -26,10 +26,10 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
     private List<Urun> list;
     private SharedPreferences mPref;
     private SharedPreferences.Editor mEditor;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView twNumara;
         public TextView twNumaraAciklama;
-
 
 
         public MyViewHolder(View itemView) {
@@ -40,6 +40,7 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
         }
 
     }
+
     public void setSelected(int pos) {
         try {
             if (list.size() > 1) {
@@ -54,7 +55,7 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
         }
     }
 
-    public UrunAraAdapter(List<Urun> list,Context context) {
+    public UrunAraAdapter(List<Urun> list, Context context) {
         this.list = list;
         mPref = context.getSharedPreferences("urun", Context.MODE_PRIVATE);
         mEditor = mPref.edit();

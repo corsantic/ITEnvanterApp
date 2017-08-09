@@ -27,21 +27,17 @@ public class PersonelGetAdapter extends RecyclerView.Adapter<PersonelGetAdapter.
     private List<Personel> list;
     private SharedPreferences mPref;
     private SharedPreferences.Editor mEditor;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView twNumara;
         public TextView twNumaraAciklama;
-
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
             twNumara = (TextView) itemView.findViewById(R.id.twLokasyon);
             twNumaraAciklama = (TextView) itemView.findViewById(R.id.twLokasyonDesc);
-
-
-
         }
-
     }
 
     public void setSelected(int pos) {
@@ -58,7 +54,7 @@ public class PersonelGetAdapter extends RecyclerView.Adapter<PersonelGetAdapter.
         }
     }
 
-    public PersonelGetAdapter(List<Personel> list,Context context) {
+    public PersonelGetAdapter(List<Personel> list, Context context) {
         this.list = list;
 
         mPref = context.getSharedPreferences("person", Context.MODE_PRIVATE);

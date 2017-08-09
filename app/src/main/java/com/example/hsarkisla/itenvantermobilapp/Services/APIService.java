@@ -29,24 +29,21 @@ public interface APIService {
     //GET by id
     @GET("api/Default/GetUrun/{id}")
     Call<List<Urun>> getUrun(@Path("id") int id);
-//Get Location by id
+    //Get Location by id
     @GET("api/Default/GetLokasyon/{id}")
     @Headers("Content-type: application/json")
     Call<List<Lokasyon>> getLocation(@Path("id") int id);
-//Get all Location
+    //Get all Location
     @GET("api/Default/GetTumLokasyon")
     Call<List<Lokasyon>>  getAllLocation();
-//Get Personel by id
+    //Get Personel by id
     @GET("api/Default/GetPersonel/{id}")
     @Headers("Content-type: application/json")
     Call<List<Personel>> getPersonel(@Path("id") int id);
-
     //GET by Barcode
     @GET("api/Default/GetUrun/{BarcodeNo}")
     Call<List<Urun>> getUrunBarcode(@Path("BarcodeNo") String barcode);
-
-
-    //ADD New Urun
+    //ADD New Envanter
     @POST("api/Default/UpdateEnvanter/{Envanter}")
     @Headers("Content-type: application/json")
     Call<Envanter> addEnvanter(@Body Envanter envanter);
