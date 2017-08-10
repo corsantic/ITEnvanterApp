@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:text="ÜRÜN AÇIKLAMA"
+                android:text="ÜRÜN ADI"
                 android:textAlignment="center" />
 
             <EditText
@@ -48,7 +49,8 @@
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:layout_weight="0.61">
 
             <TextView
                 android:id="@+id/urunModel"
@@ -79,7 +81,8 @@
             android:background="#ffffff"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:layout_weight="0.20">
 
             <TextView
                 android:id="@+id/urunMarka"
@@ -103,38 +106,38 @@
         </LinearLayout>
 
         <View style="@style/divider" />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:background="#ffffff"
             android:orientation="horizontal"
-            android:padding="10dp"
-            android:weightSum="1">
+            android:padding="13dp"
+            android:weightSum="1"
+          >
 
             <TextView
-                android:id="@+id/urunKategori"
-                android:layout_width="match_parent"
+                android:id="@+id/txKategori"
+                android:layout_width="74dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
                 android:gravity="center"
-                android:text="KATEGORİ ID"
-                android:textAlignment="center" />
+                android:text="KATEGORİ"
+                android:textAlignment="center"
+                android:layout_weight="0.92" />
 
-            <EditText
-                android:id="@+id/urunKategoriEdt"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
+            <Spinner
+                android:id="@+id/spKategori"
+                android:layout_width="171dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-
                 android:textAlignment="center" />
-
-
         </LinearLayout>
 
 
 
         <View style="@style/divider" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -167,10 +170,7 @@
         <View style="@style/divider" />
 
 
-
-
-
-<LinearLayout
+        <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -184,14 +184,15 @@
         android:textAlignment="center" />
 
 
-    <TextView
-        android:id="@+id/barcodeText"
-        android:layout_width="159dp"
-        android:layout_height="50dp"
+            <TextView
+                android:id="@+id/barcodeText"
+                android:layout_width="159dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:inputType="textPersonName"
+                android:text="BARKOD" />
 
-        android:inputType="textPersonName"
-        android:text="Barkod" />
-    <Button
+            <Button
         android:id="@+id/btAdd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

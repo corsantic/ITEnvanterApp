@@ -71,15 +71,16 @@ public class MainActivity extends AppCompatActivity
         if (getIntent().getExtras() != null) {
             // barcode degerigini guncelliyoruz
             BARCODE = getIntent().getExtras().getString("BARCODE");
-            // barcode var ise parca arayi ac
-            if (!BARCODE.equals(""))
+            // barcode var ise yeni urunu ac
+            if (!BARCODE.equals("")) {
+                {
+                    navItemIndex = 2;
+                    CURRENT_TAG = TAG_YENİ_URUN;
+                    loadHomeFragment();
 
-            {
-                navItemIndex = 2;
-                CURRENT_TAG = TAG_YENİ_URUN;
-                loadHomeFragment();
-
+                }
             }
+
         }
     }
 

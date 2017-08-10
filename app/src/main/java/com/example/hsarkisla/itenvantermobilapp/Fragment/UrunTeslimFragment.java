@@ -108,29 +108,29 @@ public class UrunTeslimFragment extends Fragment {
     }
 
     //todo Envanter Ekleme Yapılacak
-    public void EnvanterEkle() {
+//    public void EnvanterEkle() {
+//
+//
+//        setEnvanter(envanterT);
+//        service = ApiUtils.getAPIService();
+//
+//        service.addEnvanter(envanterT).enqueue(new Callback<Envanter>() {
+//            @Override
+//            public void onResponse(Call<Envanter> call, Response<Envanter> response) {
+//                if (response.isSuccessful()) {
+//                    Toast.makeText(getContext(), "Eklendi", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Envanter> call, Throwable t) {
+//                Toast.makeText(getContext(), "HATTAAA", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
-
-        setEnvanter(envanterT);
-        service = ApiUtils.getAPIService();
-
-        service.addEnvanter(envanterT).enqueue(new Callback<Envanter>() {
-            @Override
-            public void onResponse(Call<Envanter> call, Response<Envanter> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Eklendi", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Envanter> call, Throwable t) {
-                Toast.makeText(getContext(), "HATTAAA", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-    }
+//
+//    }
 
     private void setEnvanter(Envanter envanterT) {
         envanterT.setCreateId(1);
@@ -236,13 +236,13 @@ public class UrunTeslimFragment extends Fragment {
 
             }
         });
-        btTake.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                EnvanterEkle();
-            }
-        });
+//        btTake.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                EnvanterEkle();
+//            }
+//        });
 
         btGive.setOnClickListener(new View.OnClickListener() {
             @Override

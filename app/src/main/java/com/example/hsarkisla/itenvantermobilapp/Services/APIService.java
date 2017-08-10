@@ -2,6 +2,7 @@ package com.example.hsarkisla.itenvantermobilapp.Services;
 
 
 import com.example.hsarkisla.itenvantermobilapp.Model.Envanter;
+import com.example.hsarkisla.itenvantermobilapp.Model.Kategori;
 import com.example.hsarkisla.itenvantermobilapp.Model.Lokasyon;
 import com.example.hsarkisla.itenvantermobilapp.Model.Personel;
 import com.example.hsarkisla.itenvantermobilapp.Model.Urun;
@@ -40,13 +41,16 @@ public interface APIService {
     @GET("api/Default/GetPersonel/{id}")
     @Headers("Content-type: application/json")
     Call<List<Personel>> getPersonel(@Path("id") int id);
+
+    @GET("api/Default/GetKategoriListele")
+    Call<List<Kategori>>  getAllKategori();
     //GET by Barcode
-    @GET("api/Default/GetUrun/{BarcodeNo}")
+    @GET("api/Default/GetUrunBarkod/{BarcodeNo}")
     Call<List<Urun>> getUrunBarcode(@Path("BarcodeNo") String barcode);
     //ADD New Envanter
-    @POST("api/Default/UpdateEnvanter/{Envanter}")
-    @Headers("Content-type: application/json")
-    Call<Envanter> addEnvanter(@Body Envanter envanter);
+//    @POST("api/Default/UpdateEnvanter/{Envanter}")
+//    @Headers("Content-type: application/json")
+//    Call<Envanter> addEnvanter(@Body Envanter envanter);
     //ADD New Urun
     @POST("api/Default/SetYeniUrun/{Urun}")
     @Headers("Content-type: application/json")

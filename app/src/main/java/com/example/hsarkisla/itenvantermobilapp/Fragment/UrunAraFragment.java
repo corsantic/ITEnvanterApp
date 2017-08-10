@@ -43,7 +43,7 @@ public class UrunAraFragment extends Fragment {
     private EditText etParcaAra;
     private Button btBul;
     private Switch swResimNo;
-    private int girilenNo;
+    private String gelen;
     private List<Urun> resimNoListesi;
     private List<Urun> list;
     private List<Urun> geciciList;
@@ -186,11 +186,11 @@ public class UrunAraFragment extends Fragment {
 
     public void UrunListesi() {
 
-        girilenNo = Integer.parseInt(etParcaAra.getText().toString());
+        gelen = etParcaAra.getText().toString();
 
         service = ApiUtils.getAPIService();
 
-        service.getUrun(girilenNo).enqueue(new Callback<List<Urun>>() {
+        service.getUrunBarcode(gelen).enqueue(new Callback<List<Urun>>() {
 
             @Override
             public void onResponse(Call<List<Urun>> call, Response<List<Urun>> response) {

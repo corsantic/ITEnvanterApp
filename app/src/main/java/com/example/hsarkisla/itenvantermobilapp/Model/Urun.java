@@ -18,7 +18,7 @@ public class Urun implements Parcelable,Cloneable{
     @SerializedName("UrunId")
     @Expose
     private int UrunId;
-    @SerializedName("UrunAciklama")
+    @SerializedName("UrunAdi")
     @Expose
     private String UrunAciklama ;
     @SerializedName("Model")
