@@ -3,6 +3,7 @@ package com.example.hsarkisla.itenvantermobilapp.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -78,9 +79,9 @@ public class UrunTeslimFragment extends Fragment {
     private String barcode;
     private APIService service;
     private int girilenId;
-    private List<Lokasyon> locationList;
+    private static List<Lokasyon> locationList;
 
-    private Envanter envanterT;
+    private static Envanter envanterT=new Envanter();
 
     private Button btTake;
 
@@ -108,7 +109,7 @@ public class UrunTeslimFragment extends Fragment {
 
     //todo Envanter Ekleme Yapılacak
     public void EnvanterEkle() {
-        Envanter envanterT = new Envanter();
+
 
         setEnvanter(envanterT);
         service = ApiUtils.getAPIService();
@@ -136,7 +137,6 @@ public class UrunTeslimFragment extends Fragment {
         envanterT.setEnvanterKodu("AndroidTest");
         envanterT.setIslemYonu(1);
         envanterT.setIslemId(1);
-        envanterT.setLokasyonId(21);
         envanterT.setMiktar(Integer.valueOf(edtMiktar.getText().toString()));
     }
 
@@ -172,6 +172,24 @@ public class UrunTeslimFragment extends Fragment {
             // burada deger elinde oluyor artik dene bakalim
             etGive.setText(barcode);
         }
+
+        spLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                for(int i=0;i<locationList.size();i++)
+                {
+                 if(locationList.get(i).getLokasyonAdi()==spLocation.getSelectedItem().toString())
+                     envanterT.setLokasyonId(locationList.get(i).getLokasyonId());
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         aztecScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,7 +209,8 @@ public class UrunTeslimFragment extends Fragment {
                             try {
                                 mPersonelGetAdapter.setSelected(position);
                                 personel = geciciPersList.get(position);
-
+                                if(personel!=null)
+                                envanterT.setPersonelId(personel.getPersonelId());
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -237,7 +256,8 @@ public class UrunTeslimFragment extends Fragment {
                             try {
                                 mUrunNoAdapter.setSelected(position);
                                 envanter = geciciList.get(position);
-
+                         if(envanter!=null)
+                             envanterT.setUrunId(envanter.getUrunId());
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -278,7 +298,7 @@ public class UrunTeslimFragment extends Fragment {
     }
 
     private void showListinSpinner() {
-        //String array to store all the book names
+        //String array to store all the şşşşşbook names
         String[] items = new String[locationList.size()];
 
         //Traversing through the whole list to get all the names
@@ -287,11 +307,14 @@ public class UrunTeslimFragment extends Fragment {
             items[i] = locationList.get(i).getLokasyonAdi();
 
         }
-
         ArrayAdapter<String> adapter;
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
         //setting adapter to spinner
         spLocation.setAdapter(adapter);
+
+
+
+
 
 
         //Creating an array adapter for list view
@@ -344,6 +367,8 @@ public class UrunTeslimFragment extends Fragment {
                         locationList = response.body();
                         Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                         showListinSpinner();
+
+
                     }
                 }
 
