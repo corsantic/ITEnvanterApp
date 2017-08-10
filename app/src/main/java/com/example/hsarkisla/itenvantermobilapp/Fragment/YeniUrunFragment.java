@@ -96,10 +96,21 @@ public class YeniUrunFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_yeni_urun, container, false);
-        setView(view);
-
+        edtUrunAdi = (EditText) view.findViewById(R.id.urunAdiEdt);
+        edtUrunMarka = (EditText) view.findViewById(R.id.urunMarkaEdt);
+        edtUrunModel = (EditText) view.findViewById(R.id.urunModelEdt);
+        txBarcode = (TextView) view.findViewById(R.id.barcodeText);
+        txCreateDate = (TextView) view.findViewById(R.id.tvCreateDateTx);
+        btEkle = (Button) view.findViewById(R.id.btAdd);
+        btAztecAdd = (ImageButton) view.findViewById(R.id.btAztecAdd);
+        spCategory=(Spinner) view.findViewById(R.id.spKategori);
+        edtUrunDesc=(EditText) view.findViewById(R.id.edtUrunAciklama);
+        if (this.getArguments() != null) {
+            barcode = this.getArguments().getString("BarcodeYeni", "");
+            // burada deger elinde oluyor
+            txBarcode.setText(barcode);
+        }
         FillCategory();//Kategoriyi doldur;
-
         btAztecAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,8 +125,6 @@ public class YeniUrunFragment extends Fragment {
                 UrunEkle();
             }
         });
-
-
         spCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -124,83 +133,68 @@ public class YeniUrunFragment extends Fragment {
                     if(kategoriList.get(i).getKategoriAdi()==spCategory.getSelectedItem().toString()) {
                         urun.setKategoriId(kategoriList.get(i).getKategoriId());
                     }
-
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-
         return view;
-
-
     }
-
-
-
     private void showListinSpinner() {
-        //String array to store all the şşşşşbook names
+        //String array to store all the book names
         String[] items = new String[kategoriList.size()];
-
         //Traversing through the whole list to get all the names
         for (int i = 0; i < kategoriList.size(); i++) {
             //Storing names to string array
             items[i] = kategoriList.get(i).getKategoriAdi();
-
         }
         ArrayAdapter<String> adapter;
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
         //setting adapter to spinner
         spCategory.setAdapter(adapter);
-
-
         //Creating an array adapter for list view
-
     }
     public void UrunEkle() {
-
         Date date = new Date();
-        setUrun(urun, date);//urunu doldur
+        urun.setUrunAciklama(edtUrunDesc.getText().toString());
+        urun.setUrunAdi(edtUrunAdi.getText().toString());
+        urun.setMarka(edtUrunMarka.getText().toString());
+        urun.setModel(edtUrunModel.getText().toString());
+        if(barcode!=null)
+        urun.setBarkodNo(barcode);
+        else
+            urun.setBarkodNo("Barkod Okutunuz");
+        urun.setCreateId(1);
+        urun.setCreateDate(dateFormat.format(date));
+        txCreateDate.setText(urun.getCreateDate());
         service = ApiUtils.getAPIService();
 
-        {
             service.addUrun(urun).enqueue(new Callback<Urun>() {
                 @Override
                 public void onResponse(Call<Urun> call, Response<Urun> response) {
-
                     if (response.isSuccessful()) {
                         Toast.makeText(getContext(), "EKLENDİ", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 @Override
                 public void onFailure(Call<Urun> call, Throwable t) {
                     Toast.makeText(getContext(), "HATA", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-
 
     }
-
-
     public List<Kategori> FillCategory() {
         service = ApiUtils.getAPIService();
         {
             service.getAllKategori().enqueue(new Callback<List<Kategori>>() {
                 @Override
                 public void onResponse(Call<List<Kategori>> call, Response<List<Kategori>> response) {
-
                     if (response.isSuccessful()) {
                         kategoriList = response.body();
                         Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                         showListinSpinner();
-
-
                     }
                 }
 
@@ -210,43 +204,7 @@ public class YeniUrunFragment extends Fragment {
                 }
             });
         }
-
         return kategoriList;
-
-
-    }
-    private void setUrun(Urun urun, Date date) {
-        setBarcode();
-        urun.setUrunAciklama(edtUrunDesc.getText().toString());
-        urun.setUrunAdi(edtUrunAdi.getText().toString());
-        urun.setMarka(edtUrunMarka.getText().toString());
-        urun.setModel(edtUrunModel.getText().toString());
-        urun.setBarcodeNo(txBarcode.getText().toString());
-        urun.setCreateId(1);
-        urun.setCreateDate(dateFormat.format(date));
-        txCreateDate.setText(urun.getCreateDate());
-
-    }
-
-
-    private void setBarcode() {
-        if (this.getArguments() != null) {
-            barcode = this.getArguments().getString("BARCODE", "");
-            // burada deger elinde oluyor
-            txBarcode.setText(barcode);
-        }
-    }
-
-    private void setView(View view) {
-        edtUrunAdi = (EditText) view.findViewById(R.id.urunAdiEdt);
-        edtUrunMarka = (EditText) view.findViewById(R.id.urunMarkaEdt);
-        edtUrunModel = (EditText) view.findViewById(R.id.urunModelEdt);
-        txBarcode = (TextView) view.findViewById(R.id.barcodeText);
-        txCreateDate = (TextView) view.findViewById(R.id.tvCreateDateTx);
-        btEkle = (Button) view.findViewById(R.id.btAdd);
-        btAztecAdd = (ImageButton) view.findViewById(R.id.btAztecAdd);
-        spCategory=(Spinner) view.findViewById(R.id.spKategori);
-        edtUrunDesc=(EditText) view.findViewById(R.id.edtUrunAciklama);
 
     }
 

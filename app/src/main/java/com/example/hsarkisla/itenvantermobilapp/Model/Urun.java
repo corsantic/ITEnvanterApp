@@ -24,9 +24,9 @@ public class Urun implements Parcelable,Cloneable{
     @SerializedName("Model")
     @Expose
     private String Model;
-    @SerializedName("BarkodNo")
+    @SerializedName("BarcodeNo")
     @Expose
-    private String BarcodeNo ;
+    private String BarkodNo ;
     @SerializedName("CreateDate")
     @Expose
     private String CreateDate ;
@@ -45,27 +45,14 @@ public class Urun implements Parcelable,Cloneable{
     @SerializedName("UrunAdi")
     @Expose
     private String UrunAdi;
+
+
     private boolean selected;
     public boolean isSelected() {
         return selected;
     }
     public void setSelected(boolean selected) {
         this.selected = selected;
-    }
-
-
-    public  Urun(int UrunId,String UrunAciklama,String Model,String BarcodeNo,String CreateDate,String Marka,String KategoriAdi,int KategoriId,int CreateId)
-    {
-        this.UrunId=UrunId;
-        this.UrunAciklama=UrunAciklama;
-        this.Model=Model;
-        this.Marka=Marka;
-        this.BarcodeNo=BarcodeNo;
-        this.CreateDate=CreateDate;
-        this.KategoriAdi=KategoriAdi;
-        this.KategoriId=KategoriId;
-        this.CreateId=CreateId;
-
     }
 
 
@@ -116,12 +103,11 @@ public class Urun implements Parcelable,Cloneable{
 
         dest.writeString(UrunAdi);
         dest.writeString(UrunAciklama);
-
         dest.writeInt(UrunId);
         dest.writeString(KategoriAdi);
         dest.writeString(Marka);
         dest.writeString(Model);
-        dest.writeString(BarcodeNo);
+        dest.writeString(BarkodNo);
         dest.writeString(CreateDate);
         dest.writeInt(CreateId);
 
@@ -134,7 +120,7 @@ public class Urun implements Parcelable,Cloneable{
         KategoriAdi=in.readString();
         Marka = in.readString();
         Model=in.readString();
-        BarcodeNo = in.readString();
+        BarkodNo = in.readString();
         CreateDate = in.readString();
         CreateId=in.readInt();
 
@@ -189,12 +175,12 @@ public class Urun implements Parcelable,Cloneable{
         Model = model;
     }
 
-    public String getBarcodeNo() {
-        return BarcodeNo;
+    public String getBarkodNo() {
+        return BarkodNo;
     }
 
-    public void setBarcodeNo(String barcodeNo) {
-        BarcodeNo = barcodeNo;
+    public void setBarkodNo(String barkodNo) {
+        BarkodNo = barkodNo;
     }
 
     public String getCreateDate() {

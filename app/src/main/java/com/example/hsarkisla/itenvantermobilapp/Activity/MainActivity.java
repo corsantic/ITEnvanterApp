@@ -37,14 +37,15 @@ public class MainActivity extends AppCompatActivity
     private boolean shouldLoadHomeFragOnBackPress = true;
     private String[] activityTitles;
     private Toolbar toolbar;
-    public String BARCODE = "";
+    public String urunAraBarcode = "";
+    public String yeniUrunBarcode = "";
+
 
     public static String CURRENT_TAG = TAG_URUN_ARA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -70,12 +71,19 @@ public class MainActivity extends AppCompatActivity
         }
         if (getIntent().getExtras() != null) {
             // barcode degerigini guncelliyoruz
-            BARCODE = getIntent().getExtras().getString("BARCODE");
+            urunAraBarcode = getIntent().getExtras().getString("BARCODE");
+            yeniUrunBarcode=getIntent().getExtras().getString("BarcodeYeni");
             // barcode var ise yeni urunu ac
-            if (!BARCODE.equals("")) {
+            if (!yeniUrunBarcode.equals(""))
+            {
+                navItemIndex = 2;
+                CURRENT_TAG = TAG_YENİ_URUN;
+                loadHomeFragment();
+            }
+            if (!urunAraBarcode.equals("")) {
                 {
-                    navItemIndex = 2;
-                    CURRENT_TAG = TAG_YENİ_URUN;
+                    navItemIndex = 0;
+                    CURRENT_TAG = TAG_URUN_ARA;
                     loadHomeFragment();
 
                 }
@@ -83,7 +91,6 @@ public class MainActivity extends AppCompatActivity
 
         }
     }
-
 
     private void setUpNavigationView() {
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
@@ -166,10 +173,16 @@ public class MainActivity extends AppCompatActivity
 
                 Fragment fragment = getHomeFragment();
 
-                if (!BARCODE.equals("")) // barcode var ise onunla birlikte fragment'i baslatsin
+                if (!urunAraBarcode.equals("")) // barcode var ise onunla birlikte fragment'i baslatsin
                 {
                     Bundle args = new Bundle();
-                    args.putString("BARCODE", BARCODE);
+                    args.putString("BARCODE", urunAraBarcode);
+                    fragment.setArguments(args);
+                }
+                if (!yeniUrunBarcode.equals(""))
+                {
+                    Bundle args = new Bundle();
+                    args.putString("BarcodeYeni", yeniUrunBarcode);
                     fragment.setArguments(args);
                 }
 

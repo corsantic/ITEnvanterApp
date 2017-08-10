@@ -73,7 +73,7 @@ public class UrunAraAdapter extends RecyclerView.Adapter<UrunAraAdapter.MyViewHo
     public void onBindViewHolder(UrunAraAdapter.MyViewHolder holder, int position) {
 
         Urun urunler = list.get(position);
-        holder.twNumara.setText(urunler.getBarcodeNo());
+        holder.twNumara.setText(urunler.getBarkodNo());
         holder.twNumaraAciklama.setText(urunler.getUrunAciklama());
         Log.e("selection", "" + list.get(position).isSelected());
         if (list.get(position).isSelected()) {

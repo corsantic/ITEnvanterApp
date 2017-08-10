@@ -105,7 +105,6 @@ public class UrunAraFragment extends Fragment {
 
         if (this.getArguments() != null) {
             barcode = this.getArguments().getString("BARCODE", "");
-
             // burada deger elinde oluyor artik dene bakalim
             etParcaAra.setText(barcode);
         }
@@ -138,8 +137,6 @@ public class UrunAraFragment extends Fragment {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-
-
                 }
 
                         @Override

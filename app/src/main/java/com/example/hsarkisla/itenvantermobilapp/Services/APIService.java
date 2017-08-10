@@ -48,12 +48,15 @@ public interface APIService {
     @GET("api/Default/GetUrunBarkod/{BarcodeNo}")
     Call<List<Urun>> getUrunBarcode(@Path("BarcodeNo") String barcode);
     //ADD New Envanter
-//    @POST("api/Default/UpdateEnvanter/{Envanter}")
-//    @Headers("Content-type: application/json")
-//    Call<Envanter> addEnvanter(@Body Envanter envanter);
+
     //ADD New Urun
     @POST("api/Default/SetYeniUrun/{Urun}")
     @Headers("Content-type: application/json")
     Call<Urun> addUrun(@Body Urun urun);
 
+    /***
+     *todo :Envanter Kayıt
+     * @POST("api/Default/UpdateEnvanter/{Envanter}")
+     @Headers("Content-type: application/json")
+     Call<Envanter> addEnvanter(@Body Envanter envanter);*/
 }

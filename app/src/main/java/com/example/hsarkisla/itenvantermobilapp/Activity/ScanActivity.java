@@ -27,10 +27,8 @@ public class ScanActivity extends AppCompatActivity implements BarcodeRetriever 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan_activity);
 
-
         final BarcodeCapture barcodeCapture = (BarcodeCapture) getSupportFragmentManager().findFragmentById(R.id.barcode);
         barcodeCapture.setRetrieval(this);
-
 
         findViewById(R.id.flash).setOnClickListener(new View.OnClickListener() {
 
@@ -40,9 +38,7 @@ public class ScanActivity extends AppCompatActivity implements BarcodeRetriever 
                 {
                     barcodeCapture.setShowFlash(true);
                     barcodeCapture.refresh();
-
                 }
-
             }
 
         });
@@ -78,6 +74,7 @@ public class ScanActivity extends AppCompatActivity implements BarcodeRetriever 
         Intent myIntent = new Intent(this, MainActivity.class);
 
         myIntent.putExtra("BARCODE", displayValue);
+        myIntent.putExtra("BarcodeYeni",displayValue);
         this.startActivity(myIntent);
 
     }
@@ -107,7 +104,6 @@ public class ScanActivity extends AppCompatActivity implements BarcodeRetriever 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ScanActivity.this)
 
                         .setTitle("code retrieved")
-
                         .setMessage(message);
 
                 builder.show();

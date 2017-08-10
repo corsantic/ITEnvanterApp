@@ -18,14 +18,10 @@ public class Envanter implements Parcelable,Cloneable {
     private int IslemYonu;
     private String EnvanterKodu;
     private int Miktar;
-
 Envanter mInfo;
-
 
     public Envanter() {
     }
-
-
 
     @Override
     public Object clone() {
