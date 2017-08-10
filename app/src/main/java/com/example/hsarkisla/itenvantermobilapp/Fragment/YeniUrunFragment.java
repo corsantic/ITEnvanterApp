@@ -97,7 +97,7 @@ public class YeniUrunFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_yeni_urun, container, false);
         setView(view);
-        setBarcode();
+
         FillCategory();//Kategoriyi doldur;
 
         btAztecAdd.setOnClickListener(new View.OnClickListener() {
@@ -216,6 +216,7 @@ public class YeniUrunFragment extends Fragment {
 
     }
     private void setUrun(Urun urun, Date date) {
+        setBarcode();
         urun.setUrunAciklama(edtUrunDesc.getText().toString());
         urun.setUrunAdi(edtUrunAdi.getText().toString());
         urun.setMarka(edtUrunMarka.getText().toString());

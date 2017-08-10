@@ -129,9 +129,7 @@ public class Urun implements Parcelable,Cloneable{
 
     private Urun(Parcel in) {
         UrunAdi=in.readString();
-
         UrunAciklama = in.readString();
-
         UrunId = in.readInt();
         KategoriAdi=in.readString();
         Marka = in.readString();
