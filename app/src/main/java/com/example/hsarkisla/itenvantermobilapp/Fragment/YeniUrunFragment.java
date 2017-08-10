@@ -59,7 +59,7 @@ public class YeniUrunFragment extends Fragment {
     private Button btEkle;
     private TextView txCreateDate, txBarcode;
     private ImageButton btAztecAdd;
-private Spinner spCategory;
+    private Spinner spCategory;
     private static Urun urun = new Urun();
     private String mParam2;
     private String barcode;
@@ -184,9 +184,6 @@ private Spinner spCategory;
             });
         }
 
-//        Call<Urun> call = service.addWitParametres(urun.getKategoriId(), urun.getMarka(), urun.getModel(), urun.getBarcodeNo(), urun.getUrunAciklama()
-//                , urun.getCreateId());
-
 
     }
 
@@ -219,7 +216,8 @@ private Spinner spCategory;
 
     }
     private void setUrun(Urun urun, Date date) {
-        urun.setUrunAciklama(edtUrunAdi.getText().toString());
+        urun.setUrunAciklama(edtUrunDesc.getText().toString());
+        urun.setUrunAdi(edtUrunAdi.getText().toString());
         urun.setMarka(edtUrunMarka.getText().toString());
         urun.setModel(edtUrunModel.getText().toString());
         urun.setBarcodeNo(txBarcode.getText().toString());
@@ -247,6 +245,8 @@ private Spinner spCategory;
         btEkle = (Button) view.findViewById(R.id.btAdd);
         btAztecAdd = (ImageButton) view.findViewById(R.id.btAztecAdd);
         spCategory=(Spinner) view.findViewById(R.id.spKategori);
+        edtUrunDesc=(EditText) view.findViewById(R.id.edtUrunAciklama);
+
     }
 
     public void onButtonPressed(Uri uri) {

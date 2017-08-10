@@ -43,6 +43,43 @@
 
         <View style="@style/divider" />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="#ffffff"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/txUrunAciklama"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:text="ÜRÜN AÇIKLAMA"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/edtUrunAciklama"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+
+                    android:gravity="center"
+                    android:textAlignment="center" />
+
+
+            </LinearLayout>
+
+            <View style="@style/divider" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
@@ -72,8 +109,10 @@
 
 
         </LinearLayout>
-
         <View style="@style/divider" />
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -203,5 +242,6 @@
 </LinearLayout>
 
 
+</LinearLayout>
 </LinearLayout>
 </LinearLayout>

@@ -18,7 +18,7 @@ public class Urun implements Parcelable,Cloneable{
     @SerializedName("UrunId")
     @Expose
     private int UrunId;
-    @SerializedName("UrunAdi")
+    @SerializedName("UrunAciklama")
     @Expose
     private String UrunAciklama ;
     @SerializedName("Model")
@@ -42,6 +42,9 @@ public class Urun implements Parcelable,Cloneable{
     @SerializedName("CreateId")
     @Expose
     private int CreateId;
+    @SerializedName("UrunAdi")
+    @Expose
+    private String UrunAdi;
     private boolean selected;
     public boolean isSelected() {
         return selected;
@@ -110,7 +113,10 @@ public class Urun implements Parcelable,Cloneable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeString(UrunAdi);
         dest.writeString(UrunAciklama);
+
         dest.writeInt(UrunId);
         dest.writeString(KategoriAdi);
         dest.writeString(Marka);
@@ -122,8 +128,10 @@ public class Urun implements Parcelable,Cloneable{
     }
 
     private Urun(Parcel in) {
+        UrunAdi=in.readString();
 
         UrunAciklama = in.readString();
+
         UrunId = in.readInt();
         KategoriAdi=in.readString();
         Marka = in.readString();
@@ -148,6 +156,13 @@ public class Urun implements Parcelable,Cloneable{
         }
     };
 
+    public String getUrunAdi() {
+        return UrunAdi;
+    }
+
+    public void setUrunAdi(String urunAdi) {
+        UrunAdi = urunAdi;
+    }
 
 
     public int getUrunId() {
