@@ -186,7 +186,7 @@ public class UrunAraFragment extends Fragment {
 
         service = ApiUtils.getAPIService();
 
-        service.getUrunBarcode(gelen).enqueue(new Callback<List<Urun>>() {
+        service.getUrun(gelen).enqueue(new Callback<List<Urun>>() {
 
             @Override
             public void onResponse(Call<List<Urun>> call, Response<List<Urun>> response) {

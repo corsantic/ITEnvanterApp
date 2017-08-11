@@ -28,8 +28,8 @@ import retrofit2.http.Path;
 
 public interface APIService {
     //GET by id
-    @GET("api/Default/GetUrun/{id}")
-    Call<List<Urun>> getUrun(@Path("id") int id);
+    @GET("api/Default/GetUrun/{barcode}")
+    Call<List<Urun>> getUrun(@Path("barcode") String barcode);
     //Get Location by id
     @GET("api/Default/GetLokasyon/{id}")
     @Headers("Content-type: application/json")
@@ -45,8 +45,7 @@ public interface APIService {
     @GET("api/Default/GetKategoriListele")
     Call<List<Kategori>>  getAllKategori();
     //GET by Barcode
-    @GET("api/Default/GetUrunBarkod/{BarcodeNo}")
-    Call<List<Urun>> getUrunBarcode(@Path("BarcodeNo") String barcode);
+
     //ADD New Envanter
 
     //ADD New Urun

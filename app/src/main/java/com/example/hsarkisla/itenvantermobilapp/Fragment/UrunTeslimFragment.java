@@ -55,7 +55,7 @@ public class UrunTeslimFragment extends Fragment {
     private EditText etGive, etPersonel;
     private Button btGive, btPersonel;
     private Switch swResimNo;
-    private int girilenNo;
+    private String gelenNo;
     private List<Urun> resimNoListesi;
     private List<Urun> list;
     private List<Personel> listPerson;
@@ -329,9 +329,9 @@ public class UrunTeslimFragment extends Fragment {
      * Ürün
      */
     public void UrunListesi() {
-        girilenNo = Integer.parseInt(etGive.getText().toString());
+        gelenNo = (etGive.getText().toString());
         service = ApiUtils.getAPIService();
-        service.getUrun(girilenNo).enqueue(new Callback<List<Urun>>() {
+        service.getUrun(gelenNo).enqueue(new Callback<List<Urun>>() {
             @Override
             public void onResponse(Call<List<Urun>> call, Response<List<Urun>> response) {
                 int statusCode = response.code();

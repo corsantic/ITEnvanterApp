@@ -159,7 +159,6 @@ public class MainActivity extends AppCompatActivity
         // set toolbar title
         setToolbarTitle();
 
-        // todo: necessary ?
         Runnable mPendingRunnable = new Runnable() {
             @Override
             public void run() {
@@ -256,7 +255,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {//todo ekleme yapılabilir
         // Inflate the menu; this adds items to the action bar if it is present.
 
         // show menu only when home fragment is selected
@@ -272,7 +271,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {//todo ekleme yapılabilir
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
