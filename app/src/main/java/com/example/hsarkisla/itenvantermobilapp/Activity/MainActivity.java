@@ -27,7 +27,7 @@ import com.example.hsarkisla.itenvantermobilapp.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static int navItemIndex = 0;
+    public  int navItemIndex = 0;
     private NavigationView navigationView;
     private static final String TAG_URUN_ARA = "Ürün Ara";
     private static final String TAG_URUN_TESLİM = "Ürün Teslim ";
@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity
     private String[] activityTitles;
     private Toolbar toolbar;
 
-    public static String yeniUrunBarcode = "";
-
+    public  String yeniUrunBarcode = "";
 
     public static String CURRENT_TAG = TAG_URUN_ARA;
 
