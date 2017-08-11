@@ -106,7 +106,7 @@ public class YeniUrunFragment extends Fragment {
         spCategory=(Spinner) view.findViewById(R.id.spKategori);
         edtUrunDesc=(EditText) view.findViewById(R.id.edtUrunAciklama);
         if (this.getArguments() != null) {
-            barcode = this.getArguments().getString("BarcodeYeni", "");
+            barcode = this.getArguments().getString("BARCODE", "");
             // burada deger elinde oluyor
             txBarcode.setText(barcode);
         }

@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity
 
 
     public static String CURRENT_TAG = TAG_URUN_ARA;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,25 +73,20 @@ public class MainActivity extends AppCompatActivity
         if (getIntent().getExtras() != null) {
             // barcode degerigini guncelliyoruz
             urunAraBarcode = getIntent().getExtras().getString("BARCODE");
-            yeniUrunBarcode=getIntent().getExtras().getString("BarcodeYeni");
-            // barcode var ise yeni urunu ac
-            if (!yeniUrunBarcode.equals(""))
-            {
-                navItemIndex = 2;
-                CURRENT_TAG = TAG_YENİ_URUN;
-                loadHomeFragment();
-            }
-            if (!urunAraBarcode.equals("")) {
-                {
-                    navItemIndex = 0;
-                    CURRENT_TAG = TAG_URUN_ARA;
-                    loadHomeFragment();
 
+            // barcode var ise yeni urunu ac
+
+                if (!urunAraBarcode.equals("")) {
+                    {
+                        navItemIndex = 0;
+                        CURRENT_TAG = TAG_URUN_ARA;
+                        loadHomeFragment();
+                    }
                 }
             }
-
         }
-    }
+
+
 
     private void setUpNavigationView() {
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
@@ -179,12 +175,6 @@ public class MainActivity extends AppCompatActivity
                     args.putString("BARCODE", urunAraBarcode);
                     fragment.setArguments(args);
                 }
-                if (!yeniUrunBarcode.equals(""))
-                {
-                    Bundle args = new Bundle();
-                    args.putString("BarcodeYeni", yeniUrunBarcode);
-                    fragment.setArguments(args);
-                }
 
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -212,6 +202,7 @@ public class MainActivity extends AppCompatActivity
         // refresh toolbar menu
         invalidateOptionsMenu();
     }
+
     private void setToolbarTitle() {
         getSupportActionBar().setTitle(activityTitles[navItemIndex]);
     }
@@ -219,7 +210,6 @@ public class MainActivity extends AppCompatActivity
     private void selectNavMenu() {
         navigationView.getMenu().getItem(navItemIndex).setChecked(true);
     }
-
 
 
     private Fragment getHomeFragment() {

@@ -72,9 +72,8 @@ public class ScanActivity extends AppCompatActivity implements BarcodeRetriever 
 
     public void sendData(String displayValue) {
         Intent myIntent = new Intent(this, MainActivity.class);
-
         myIntent.putExtra("BARCODE", displayValue);
-        myIntent.putExtra("BarcodeYeni",displayValue);
+
         this.startActivity(myIntent);
 
     }
