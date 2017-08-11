@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     private String[] activityTitles;
     private Toolbar toolbar;
 
-    public String yeniUrunBarcode = "";
+    public static String yeniUrunBarcode = "";
 
 
     public static String CURRENT_TAG = TAG_URUN_ARA;
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         }
         if (getIntent().getExtras() != null) {
             yeniUrunBarcode = getIntent().getExtras().getString("BARCODE");
+
                 if (!yeniUrunBarcode.equals("")) {
                     {
                         navItemIndex = 2;

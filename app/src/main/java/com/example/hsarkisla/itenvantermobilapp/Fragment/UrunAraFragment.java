@@ -105,7 +105,6 @@ public class UrunAraFragment extends Fragment {
 
         if (this.getArguments() != null) {
             barcode = this.getArguments().getString("BARCODE", "");
-            // burada deger elinde oluyor artik dene bakalim
             etParcaAra.setText(barcode);
         }
 
@@ -183,9 +182,7 @@ public class UrunAraFragment extends Fragment {
     public void UrunListesi() {
 
         gelen = etParcaAra.getText().toString();
-
         service = ApiUtils.getAPIService();
-
         service.getUrun(gelen).enqueue(new Callback<List<Urun>>() {
 
             @Override
