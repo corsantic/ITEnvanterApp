@@ -1,4 +1,5 @@
 package com.example.hsarkisla.itenvantermobilapp.Activity;
+/**Furkan Aydın-Intern in Tuvasas*/
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity
     private boolean shouldLoadHomeFragOnBackPress = true;
     private String[] activityTitles;
     private Toolbar toolbar;
-    public String urunAraBarcode = "";
+
     public String yeniUrunBarcode = "";
 
 
@@ -71,17 +72,14 @@ public class MainActivity extends AppCompatActivity
             loadHomeFragment();
         }
         if (getIntent().getExtras() != null) {
-            // barcode degerigini guncelliyoruz
-            urunAraBarcode = getIntent().getExtras().getString("BARCODE");
-
-            // barcode var ise yeni urunu ac
-
-                if (!urunAraBarcode.equals("")) {
+            yeniUrunBarcode = getIntent().getExtras().getString("BARCODE");
+                if (!yeniUrunBarcode.equals("")) {
                     {
-                        navItemIndex = 0;
-                        CURRENT_TAG = TAG_URUN_ARA;
+                        navItemIndex = 2;
+                        CURRENT_TAG = TAG_YENİ_URUN;
                         loadHomeFragment();
                     }
+
                 }
             }
         }
@@ -169,10 +167,10 @@ public class MainActivity extends AppCompatActivity
 
                 Fragment fragment = getHomeFragment();
 
-                if (!urunAraBarcode.equals("")) // barcode var ise onunla birlikte fragment'i baslatsin
+                if (!yeniUrunBarcode.equals("")) // barcode var ise onunla birlikte fragment'i baslatsin
                 {
                     Bundle args = new Bundle();
-                    args.putString("BARCODE", urunAraBarcode);
+                    args.putString("BARCODE", yeniUrunBarcode);
                     fragment.setArguments(args);
                 }
 

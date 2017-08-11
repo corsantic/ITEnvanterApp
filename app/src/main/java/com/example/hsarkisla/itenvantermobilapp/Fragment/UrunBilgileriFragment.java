@@ -72,9 +72,6 @@ public class UrunBilgileriFragment extends Fragment {
                 tvKategori.setText(gelenUrunler.getKategoriAdi() + "");
             if (gelenUrunler.getCreateDate() != null)
                 tvCreate.setText(gelenUrunler.getCreateDate() + "");
-
-
-
         }
 
         return view;

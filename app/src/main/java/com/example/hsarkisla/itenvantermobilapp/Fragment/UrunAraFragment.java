@@ -109,7 +109,6 @@ public class UrunAraFragment extends Fragment {
             etParcaAra.setText(barcode);
         }
 
-
         aztecScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
